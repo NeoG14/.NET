@@ -449,6 +449,8 @@ catch (System.Exception)
 Console.WriteLine($"resultado: {resultado}");
 */
 
+//18
+/*
 try {
     Metodo1();
 }
@@ -498,8 +500,16 @@ void Metodo3() {
         throw;
     }
 }
+/*
 
-
+// Lo que imprime:
+/*
+Bloque finally en Metodo1
+Método 1 propagó una excepción no tratada
+Método 2 propagó una excepción no tratada
+Excepción InvalidCast en Metodo3
+Método 3 propagó una excepción
+*/
 
 
 

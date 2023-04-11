@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nicol\\Documents\\Facultad\\.NET\\proyectosDotnet\\practica3\\practica3.csproj": {}
+    "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\practica3\\practica3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nicol\\Documents\\Facultad\\.NET\\proyectosDotnet\\practica3\\practica3.csproj": {
+    "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\practica3\\practica3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nicol\\Documents\\Facultad\\.NET\\proyectosDotnet\\practica3\\practica3.csproj",
+        "projectUniqueName": "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\practica3\\practica3.csproj",
         "projectName": "practica3",
-        "projectPath": "C:\\Users\\nicol\\Documents\\Facultad\\.NET\\proyectosDotnet\\practica3\\practica3.csproj",
+        "projectPath": "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\practica3\\practica3.csproj",
         "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nicol\\Documents\\Facultad\\.NET\\proyectosDotnet\\practica3\\obj\\",
+        "outputPath": "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\practica3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config"
