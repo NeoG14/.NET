@@ -1,0 +1,15 @@
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\bin\Debug\net7.0\teoria1.exe
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\bin\Debug\net7.0\teoria1.deps.json
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\bin\Debug\net7.0\teoria1.runtimeconfig.json
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\bin\Debug\net7.0\teoria1.dll
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\bin\Debug\net7.0\teoria1.pdb
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\obj\Debug\net7.0\teoria1.csproj.AssemblyReference.cache
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\obj\Debug\net7.0\teoria1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\obj\Debug\net7.0\teoria1.AssemblyInfoInputs.cache
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\obj\Debug\net7.0\teoria1.AssemblyInfo.cs
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\obj\Debug\net7.0\teoria1.csproj.CoreCompileInputs.cache
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\obj\Debug\net7.0\teoria1.dll
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\obj\Debug\net7.0\refint\teoria1.dll
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\obj\Debug\net7.0\teoria1.pdb
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\obj\Debug\net7.0\teoria1.genruntimeconfig.cache
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\teoria1\obj\Debug\net7.0\ref\teoria1.dll

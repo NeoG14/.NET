@@ -1,0 +1,15 @@
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\bin\Debug\net7.0\Teoria3.exe
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\bin\Debug\net7.0\Teoria3.deps.json
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\bin\Debug\net7.0\Teoria3.runtimeconfig.json
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\bin\Debug\net7.0\Teoria3.dll
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\bin\Debug\net7.0\Teoria3.pdb
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\obj\Debug\net7.0\Teoria3.csproj.AssemblyReference.cache
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\obj\Debug\net7.0\Teoria3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\obj\Debug\net7.0\Teoria3.AssemblyInfoInputs.cache
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\obj\Debug\net7.0\Teoria3.AssemblyInfo.cs
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\obj\Debug\net7.0\Teoria3.csproj.CoreCompileInputs.cache
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\obj\Debug\net7.0\Teoria3.dll
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\obj\Debug\net7.0\refint\Teoria3.dll
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\obj\Debug\net7.0\Teoria3.pdb
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\obj\Debug\net7.0\Teoria3.genruntimeconfig.cache
+C:\Users\nicol\Documents\Facultad\.NET\proyectosDotnet\Teoria3\obj\Debug\net7.0\ref\Teoria3.dll
