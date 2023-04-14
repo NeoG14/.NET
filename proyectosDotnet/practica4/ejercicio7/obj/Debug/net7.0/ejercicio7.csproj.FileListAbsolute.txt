@@ -1,0 +1,15 @@
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\bin\Debug\net7.0\ejercicio7.exe
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\bin\Debug\net7.0\ejercicio7.deps.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\bin\Debug\net7.0\ejercicio7.runtimeconfig.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\bin\Debug\net7.0\ejercicio7.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\bin\Debug\net7.0\ejercicio7.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\obj\Debug\net7.0\ejercicio7.csproj.AssemblyReference.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\obj\Debug\net7.0\ejercicio7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\obj\Debug\net7.0\ejercicio7.AssemblyInfoInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\obj\Debug\net7.0\ejercicio7.AssemblyInfo.cs
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\obj\Debug\net7.0\ejercicio7.csproj.CoreCompileInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\obj\Debug\net7.0\ejercicio7.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\obj\Debug\net7.0\refint\ejercicio7.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\obj\Debug\net7.0\ejercicio7.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\obj\Debug\net7.0\ejercicio7.genruntimeconfig.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio7\obj\Debug\net7.0\ref\ejercicio7.dll
