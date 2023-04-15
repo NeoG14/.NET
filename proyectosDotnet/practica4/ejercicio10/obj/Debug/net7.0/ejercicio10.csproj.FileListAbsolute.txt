@@ -1,0 +1,15 @@
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\bin\Debug\net7.0\ejercicio10.exe
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\bin\Debug\net7.0\ejercicio10.deps.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\bin\Debug\net7.0\ejercicio10.runtimeconfig.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\bin\Debug\net7.0\ejercicio10.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\bin\Debug\net7.0\ejercicio10.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\obj\Debug\net7.0\ejercicio10.csproj.AssemblyReference.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\obj\Debug\net7.0\ejercicio10.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\obj\Debug\net7.0\ejercicio10.AssemblyInfoInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\obj\Debug\net7.0\ejercicio10.AssemblyInfo.cs
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\obj\Debug\net7.0\ejercicio10.csproj.CoreCompileInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\obj\Debug\net7.0\ejercicio10.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\obj\Debug\net7.0\refint\ejercicio10.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\obj\Debug\net7.0\ejercicio10.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\obj\Debug\net7.0\ejercicio10.genruntimeconfig.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\practica4\ejercicio10\obj\Debug\net7.0\ref\ejercicio10.dll
