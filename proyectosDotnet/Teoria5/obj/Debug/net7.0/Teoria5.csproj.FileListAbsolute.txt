@@ -1,0 +1,15 @@
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\bin\Debug\net7.0\Teoria5.exe
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\bin\Debug\net7.0\Teoria5.deps.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\bin\Debug\net7.0\Teoria5.runtimeconfig.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\bin\Debug\net7.0\Teoria5.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\bin\Debug\net7.0\Teoria5.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\obj\Debug\net7.0\Teoria5.csproj.AssemblyReference.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\obj\Debug\net7.0\Teoria5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\obj\Debug\net7.0\Teoria5.AssemblyInfoInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\obj\Debug\net7.0\Teoria5.AssemblyInfo.cs
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\obj\Debug\net7.0\Teoria5.csproj.CoreCompileInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\obj\Debug\net7.0\Teoria5.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\obj\Debug\net7.0\refint\Teoria5.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\obj\Debug\net7.0\Teoria5.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\obj\Debug\net7.0\Teoria5.genruntimeconfig.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Teoria5\obj\Debug\net7.0\ref\Teoria5.dll
