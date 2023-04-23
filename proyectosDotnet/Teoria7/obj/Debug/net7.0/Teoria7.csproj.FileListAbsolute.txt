@@ -1,0 +1,15 @@
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\bin\Debug\net7.0\Teoria7.exe
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\bin\Debug\net7.0\Teoria7.deps.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\bin\Debug\net7.0\Teoria7.runtimeconfig.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\bin\Debug\net7.0\Teoria7.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\bin\Debug\net7.0\Teoria7.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\obj\Debug\net7.0\Teoria7.csproj.AssemblyReference.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\obj\Debug\net7.0\Teoria7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\obj\Debug\net7.0\Teoria7.AssemblyInfoInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\obj\Debug\net7.0\Teoria7.AssemblyInfo.cs
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\obj\Debug\net7.0\Teoria7.csproj.CoreCompileInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\obj\Debug\net7.0\Teoria7.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\obj\Debug\net7.0\refint\Teoria7.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\obj\Debug\net7.0\Teoria7.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\obj\Debug\net7.0\Teoria7.genruntimeconfig.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\teoria7\obj\Debug\net7.0\ref\Teoria7.dll

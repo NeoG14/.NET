@@ -1,0 +1,15 @@
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\bin\Debug\net7.0\CalculoSimple.exe
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\bin\Debug\net7.0\CalculoSimple.deps.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\bin\Debug\net7.0\CalculoSimple.runtimeconfig.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\bin\Debug\net7.0\CalculoSimple.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\bin\Debug\net7.0\CalculoSimple.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\obj\Debug\net7.0\CalculoSimple.csproj.AssemblyReference.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\obj\Debug\net7.0\CalculoSimple.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\obj\Debug\net7.0\CalculoSimple.AssemblyInfoInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\obj\Debug\net7.0\CalculoSimple.AssemblyInfo.cs
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\obj\Debug\net7.0\CalculoSimple.csproj.CoreCompileInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\obj\Debug\net7.0\CalculoSimple.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\obj\Debug\net7.0\refint\CalculoSimple.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\obj\Debug\net7.0\CalculoSimple.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\obj\Debug\net7.0\CalculoSimple.genruntimeconfig.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\CalculoSimple\obj\Debug\net7.0\ref\CalculoSimple.dll

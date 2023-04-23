@@ -1,0 +1,15 @@
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\bin\Debug\net7.0\Almacen.Repositorios.deps.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\bin\Debug\net7.0\Almacen.Repositorios.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\bin\Debug\net7.0\Almacen.Repositorios.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\bin\Debug\net7.0\Almacen.Aplicacion.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\bin\Debug\net7.0\Almacen.Aplicacion.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\obj\Debug\net7.0\Almacen.Repositorios.csproj.AssemblyReference.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\obj\Debug\net7.0\Almacen.Repositorios.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\obj\Debug\net7.0\Almacen.Repositorios.AssemblyInfoInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\obj\Debug\net7.0\Almacen.Repositorios.AssemblyInfo.cs
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\obj\Debug\net7.0\Almacen.Repositorios.csproj.CoreCompileInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\obj\Debug\net7.0\Almacen.Repositorios.csproj.CopyComplete
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\obj\Debug\net7.0\Almacen.Repositorios.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\obj\Debug\net7.0\refint\Almacen.Repositorios.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\obj\Debug\net7.0\Almacen.Repositorios.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Almacen\Almacen.Repositorios\obj\Debug\net7.0\ref\Almacen.Repositorios.dll

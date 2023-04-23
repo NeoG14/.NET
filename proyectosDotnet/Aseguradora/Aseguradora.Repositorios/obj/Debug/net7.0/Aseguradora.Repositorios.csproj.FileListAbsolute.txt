@@ -1,0 +1,15 @@
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Repositorios.deps.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Repositorios.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Repositorios.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Aplicacion.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\bin\Debug\net7.0\Aseguradora.Aplicacion.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.csproj.AssemblyReference.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.AssemblyInfoInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.AssemblyInfo.cs
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.csproj.CoreCompileInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.csproj.CopyComplete
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\refint\Aseguradora.Repositorios.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\Aseguradora.Repositorios.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\Aseguradora\Aseguradora.Repositorios\obj\Debug\net7.0\ref\Aseguradora.Repositorios.dll
