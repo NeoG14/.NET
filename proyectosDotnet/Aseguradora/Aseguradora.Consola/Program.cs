@@ -17,7 +17,8 @@ var ModificarTitular = new ModificarTitularUseCase(repo);
 //AgregarTitular.Ejecutar(new Titular() {dni="44721351", apellido="Rocio", nombre="Lunge", telefono="3755 3232798", direccion="Calle Siempre viva 742", correo="correito@gmail.com"});
 //AgregarTitular.Ejecutar(new Titular() {dni="4356369", apellido="Son", nombre="Goku", telefono="221 32434353", direccion="Calle 33 n° 721", correo="goku@correo.com"});
 //EliminarTitular.Ejecutar(2);
-ModificarTitular.Ejecutar("41899909");
+//ModificarTitular.Ejecutar("41899909");
+
 var lista = ListarTitulares.Ejecutar();
 
 foreach(Titular t in lista)

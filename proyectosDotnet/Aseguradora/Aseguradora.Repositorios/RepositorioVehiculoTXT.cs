@@ -1,13 +1,14 @@
 namespace Aseguradora.Repositorios;
 using Aseguradora.Aplicacion;
 
-public class RepositorioTitularTXT : IRepositorioTitular
+public class RepositorioVehiculoTXT : IRepositorioVehiculo
 {
-    readonly string _nombreArch = "titulares.txt";
-    readonly string path = @".\titulares.txt";
-    readonly string pathVehiculos = @".\vehiculos.txt";
-    private RepositorioVehiculoTXT repoVehiculo = new RepositorioVehiculoTXT();
-    
+    readonly string _nombreArch = "vehiculos.txt";
+    readonly string path = @".\vehiculos.txt";
+    readonly string pathTitulares = @".\titulares.txt";
+    readonly string pathPolizas = @".\polizas.txt";
+    private RepositorioPolizaTXT repoPoliza = new RepositorioPolizaTXT();
+
     private int GenerarId()
     {
         int id = 1;
@@ -21,62 +22,61 @@ public class RepositorioTitularTXT : IRepositorioTitular
             //Retorno el ultimo id+1
             return id+1;
         }
-        
     }
-    
-    private bool PuedoAgregar(string dni) //Verificar que el dni es único
+
+    private bool PuedoAgregar(string dominio) //Verificar que la patente es única
     {
         bool puedo = true;
         string[] datos = File.ReadAllLines(path);//Leo todos los campos del txt
         for(int i=0; i<datos.Length;i++)
         {
             //Recorro el arreglo y verifico si el dni es único
-            if(datos[i].Split(',')[3] == dni){
+            if(datos[i].Split(',')[1] == dominio){
                 puedo = false;
-                return puedo; //Si hay algun dni igual corto la ejecucion y retorno
+                return puedo; //Si hay alguna patente igual corto la ejecucion y retorno
             }   
         }
         return puedo;
     }
 
-    public void AgregarTitular(Titular titular)
+    public void AgregarVehiculo(Vehiculo vehiculo)
     {
         //Compruebo que ningun campo sea vacio
-        if(titular.apellido!="" && titular.nombre!="" && titular.dni!="" && titular.direccion!="" && titular.correo!="" && titular.telefono!=""){
-            titular.id = GenerarId();
-            if(PuedoAgregar(titular.dni)){
+        if(vehiculo.dominio!="" && vehiculo.marca!="" && vehiculo.fabricacion!="" && vehiculo.titular!=-1){
+            vehiculo.id = GenerarId();
+            if(PuedoAgregar(vehiculo.dominio) && ExisteTitular(vehiculo.titular)){ //Comprueno que no se repita la patente y que existe el titular
                 using var sw = new StreamWriter(_nombreArch,true);
-                sw.WriteLine($"{titular.id},{titular.nombre},{titular.apellido},{titular.dni},{titular.telefono},{titular.direccion},{titular.correo}");
+                sw.WriteLine($"{vehiculo.id},{vehiculo.dominio},{vehiculo.marca},{vehiculo.fabricacion},{vehiculo.titular}");
             }else
             {
-                string message = "El DNI no es único";
+                string message = "La patente no es única";
                 throw new UniqueFieldNotUniqueException(message);
             }
         }else
         {
             string message = "Todos los campos deben estar llenos";
             throw new AllFieldNotFilledException(message);
-        }    
+        }   
     }
 
-    private void EliminarVehiculos(int id)
+    private void EliminarPolizas(int idVehiculo)
     {
-        List<int> ids_titular = new List<int>();
-        string[] datos = File.ReadAllLines(pathVehiculos);
+        List<int> ids_polizas = new List<int>();
+        string[] datos = File.ReadAllLines(pathPolizas);
         foreach(string dato in datos)
         {
-            if(int.Parse(dato.Split(',')[4]) == id)//Si el IdTitular = id
+            if(int.Parse(dato.Split(',')[1]) == idVehiculo)//Si el IdVehiculo = id
             {
-                ids_titular.Add(int.Parse(dato.Split(',')[4]));//Agrego el id a la lista de ids
+                ids_polizas.Add(int.Parse(dato.Split(',')[1]));//Agrego el id a la lista de ids
             }
         }
-        foreach(int idV in ids_titular)//Llamo a eliminar vehiculo del repositorios de vehiculos con los ID a eliminar
+        foreach(int idP in ids_polizas)//Llamo a eliminar vehiculo del repositorios de vehiculos con los ID a eliminar
         {
-            repoVehiculo.EliminarVehiculo(idV);
+            repoPoliza.EliminarPoliza(idP);
         }
     }
 
-    public void EliminarTitular(int id)
+    public void EliminarVehiculo(int id)
     {
         bool encontre = false; string st;
         List<string> datos = new List<string>();
@@ -94,9 +94,10 @@ public class RepositorioTitularTXT : IRepositorioTitular
         sr.Dispose();
         if(encontre)
         {
-            EliminarVehiculos(id);
+            EliminarPolizas(id);
             File.WriteAllLines(path,datos);
-        } 
+        }
+            
         else
         {
             string message = "ID no encontrado";
@@ -104,20 +105,33 @@ public class RepositorioTitularTXT : IRepositorioTitular
         }
     }
 
+    private bool ExisteTitular(int titularId) //Verificar que el id de titular exista
+    {
+        bool puedo = false;
+        string[] datos = File.ReadAllLines(pathTitulares);//Leo todos los campos del txt
+        for(int i=0; i<datos.Length;i++)
+        {
+            //Recorro el arreglo y verifico si existe el Id en el registro de titulares
+            if(int.Parse(datos[i].Split(',')[0]) == titularId){
+                puedo = true;
+                return puedo; //Si hay alguna coincidencia retorno true
+            }   
+        }
+        return puedo;
+    }
+
     private string modificar(string st)
     {
-        string[] titular = st.Split(',');
+        string[] vehiculo = st.Split(',');
         int opc = -1;
         string mod = "";
         while(opc != 0)
         {
             Console.WriteLine("Seleccione campo a modificar");
-            Console.WriteLine("1-Nombre");
-            Console.WriteLine("2-Apellido");
-            Console.WriteLine("3-DNI");
-            Console.WriteLine("4-Telefono");
-            Console.WriteLine("5-Direccion");
-            Console.WriteLine("6-Correo");
+            Console.WriteLine("1-Dominio");
+            Console.WriteLine("2-Marca");
+            Console.WriteLine("3-Año de fabricación");
+            Console.WriteLine("4-Titular");
             Console.WriteLine("0-Terminar");
             Console.WriteLine();
             Console.Write("Opcion: "); opc = int.Parse(Console.ReadLine()?? "7");
@@ -125,52 +139,36 @@ public class RepositorioTitularTXT : IRepositorioTitular
             switch (opc)
             {
                 case 1:
-                    Console.Write("Ingrese Nombre: ");
+                    Console.Write("Ingrese Dominio: ");
                     mod = Console.ReadLine()?? "";
                     if(mod != "") 
-                        titular[1]=mod;
+                        vehiculo[1]=mod;
                     else
                         Console.WriteLine("No puede ir vacio");
                     break;
                 case 2:
-                    Console.Write("Ingrese Apellido: ");
+                    Console.Write("Ingrese Marca: ");
                     mod = Console.ReadLine()?? "";
                     if(mod != "") 
-                        titular[2]=mod;
+                        vehiculo[2]=mod;
                     else
                         Console.WriteLine("No puede ir vacio");
                     break;
                 case 3:
-                    Console.Write("Ingrese DNI: ");
+                    Console.Write("Ingrese Año de fabricación: ");
                     mod = Console.ReadLine()?? "";
                     if(mod != "") 
-                        titular[3]=mod;
+                        vehiculo[3]=mod;
                     else
                         Console.WriteLine("No puede ir vacio");
                     break;
                 case 4:
-                    Console.Write("Ingrese Telefono: ");
+                    Console.Write("Ingrese Id de Titular: ");
                     mod = Console.ReadLine()?? "";
-                    if(mod != "") 
-                        titular[4]=mod;
+                    if( ExisteTitular(int.Parse(mod))  && mod!="") 
+                        vehiculo[4]=mod;
                     else
-                        Console.WriteLine("No puede ir vacio");
-                    break;
-                case 5:
-                    Console.Write("Ingrese Direccion: ");
-                    mod = Console.ReadLine()?? "";
-                    if(mod != "") 
-                        titular[5]=mod;
-                    else
-                        Console.WriteLine("No puede ir vacio");
-                    break;
-                case 6:
-                    Console.Write("Ingrese Correo: ");
-                    mod = Console.ReadLine()?? "";
-                    if(mod != "") 
-                        titular[6]=mod;
-                    else
-                        Console.WriteLine("No puede ir vacio");
+                        Console.WriteLine("El Id ingresado no figura entre los titulares o El campo es vacio");
                     break;
                 case 0: Console.WriteLine();
                     break;
@@ -179,10 +177,9 @@ public class RepositorioTitularTXT : IRepositorioTitular
                     break;
             }
         }
-        return $"{titular[0]},{titular[1]},{titular[2]},{titular[3]},{titular[4]},{titular[5]},{titular[6]}";
+        return $"{vehiculo[0]},{vehiculo[1]},{vehiculo[2]},{vehiculo[3]},{vehiculo[4]}";
     }
-
-    public void ModificarTitular(string dni)
+    public void ModificarVehiculo(int id)
     {
         bool encontre = false;
         int pos = 0;
@@ -190,7 +187,7 @@ public class RepositorioTitularTXT : IRepositorioTitular
         string st = "";
         while(!encontre && pos<datos.Length)
         {
-            if(datos[pos].Split(',')[3] == dni)
+            if(int.Parse(datos[pos].Split(',')[0]) == id)
             {
                 encontre = true;
                 st = datos[pos];
@@ -203,28 +200,25 @@ public class RepositorioTitularTXT : IRepositorioTitular
             File.WriteAllLines(path,datos);
         }else
         {
-            string message = "DNI no encontrado";
+            string message = "ID no encontrado";
             throw new IdNotFoundException(message);
-        }        
+        }
     }
-
-    public List<Titular> ListarTitulares()
+    public List<Vehiculo> ListarVehiculos()
     {
-        var titulares = new List<Titular>();
+        var vehiculos = new List<Vehiculo>();
         using var sr = new StreamReader(_nombreArch);
         while(!sr.EndOfStream)
         {
-            var titular = new Titular();
+            var vehiculo = new Vehiculo();
             string[] datos = (sr.ReadLine() ?? "").Split(',');
-            titular.id=int.Parse(datos[0]);
-            titular.nombre=datos[1];
-            titular.apellido=datos[2];
-            titular.dni=datos[3];
-            titular.telefono=datos[4];
-            titular.direccion=datos[5];
-            titular.correo=datos[6];
-            titulares.Add(titular);
+            vehiculo.id=int.Parse(datos[0]);
+            vehiculo.dominio=datos[1];
+            vehiculo.marca=datos[2];
+            vehiculo.fabricacion=datos[3];
+            vehiculo.titular=int.Parse(datos[4]);
+            vehiculos.Add(vehiculo);
         }
-        return titulares;
+        return vehiculos;
     }
 }
