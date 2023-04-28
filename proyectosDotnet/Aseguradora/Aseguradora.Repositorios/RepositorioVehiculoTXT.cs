@@ -7,7 +7,11 @@ public class RepositorioVehiculoTXT : IRepositorioVehiculo
     readonly string path = @".\vehiculos.txt";
     readonly string pathTitulares = @".\titulares.txt";
     readonly string pathPolizas = @".\polizas.txt";
-    private RepositorioPolizaTXT repoPoliza = new RepositorioPolizaTXT();
+    private readonly IRepositorioPoliza repoPoliza;
+    public RepositorioVehiculoTXT(IRepositorioPoliza repo)
+    {
+        repoPoliza = repo;
+    }
 
     private int GenerarId()
     {
@@ -27,15 +31,18 @@ public class RepositorioVehiculoTXT : IRepositorioVehiculo
     private bool PuedoAgregar(string dominio) //Verificar que la patente es única
     {
         bool puedo = true;
-        string[] datos = File.ReadAllLines(path);//Leo todos los campos del txt
-        for(int i=0; i<datos.Length;i++)
-        {
-            //Recorro el arreglo y verifico si el dni es único
-            if(datos[i].Split(',')[1] == dominio){
-                puedo = false;
-                return puedo; //Si hay alguna patente igual corto la ejecucion y retorno
-            }   
+        if(File.Exists(path)){
+            string[] datos = File.ReadAllLines(path);//Leo todos los campos del txt
+            for(int i=0; i<datos.Length;i++)
+            {
+                //Recorro el arreglo y verifico si el dni es único
+                if(datos[i].Split(',')[1] == dominio){
+                    puedo = false;
+                    return puedo; //Si hay alguna patente igual corto la ejecucion y retorno
+                }   
+            }
         }
+        
         return puedo;
     }
 
@@ -49,7 +56,7 @@ public class RepositorioVehiculoTXT : IRepositorioVehiculo
                 sw.WriteLine($"{vehiculo.id},{vehiculo.dominio},{vehiculo.marca},{vehiculo.fabricacion},{vehiculo.titular}");
             }else
             {
-                string message = "La patente no es única";
+                string message = "La patente no es única o El titular no existe";
                 throw new UniqueFieldNotUniqueException(message);
             }
         }else
@@ -61,19 +68,22 @@ public class RepositorioVehiculoTXT : IRepositorioVehiculo
 
     private void EliminarPolizas(int idVehiculo)
     {
-        List<int> ids_polizas = new List<int>();
-        string[] datos = File.ReadAllLines(pathPolizas);
-        foreach(string dato in datos)
-        {
-            if(int.Parse(dato.Split(',')[1]) == idVehiculo)//Si el IdVehiculo = id
+        if(File.Exists(pathPolizas)) {
+            List<int> ids_polizas = new List<int>();
+            string[] datos = File.ReadAllLines(pathPolizas);
+            foreach(string dato in datos)
             {
-                ids_polizas.Add(int.Parse(dato.Split(',')[1]));//Agrego el id a la lista de ids
+                if(int.Parse(dato.Split(',')[1]) == idVehiculo)//Si el IdVehiculo = id
+                {
+                    ids_polizas.Add(int.Parse(dato.Split(',')[0]));//Agrego el id a la lista de ids
+                }
+            }
+            foreach(int idP in ids_polizas)//Llamo a eliminar vehiculo del repositorios de vehiculos con los ID a eliminar
+            {
+                repoPoliza.EliminarPoliza(idP);
             }
         }
-        foreach(int idP in ids_polizas)//Llamo a eliminar vehiculo del repositorios de vehiculos con los ID a eliminar
-        {
-            repoPoliza.EliminarPoliza(idP);
-        }
+        
     }
 
     public void EliminarVehiculo(int id)

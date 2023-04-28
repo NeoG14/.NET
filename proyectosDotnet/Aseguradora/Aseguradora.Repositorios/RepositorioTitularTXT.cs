@@ -6,8 +6,11 @@ public class RepositorioTitularTXT : IRepositorioTitular
     readonly string _nombreArch = "titulares.txt";
     readonly string path = @".\titulares.txt";
     readonly string pathVehiculos = @".\vehiculos.txt";
-    private RepositorioVehiculoTXT repoVehiculo = new RepositorioVehiculoTXT();
-    
+    private readonly IRepositorioVehiculo repoVehiculo;
+    public RepositorioTitularTXT(IRepositorioVehiculo repo)
+    {
+        repoVehiculo = repo;
+    }
     private int GenerarId()
     {
         int id = 1;
@@ -61,19 +64,22 @@ public class RepositorioTitularTXT : IRepositorioTitular
 
     private void EliminarVehiculos(int id)
     {
-        List<int> ids_titular = new List<int>();
-        string[] datos = File.ReadAllLines(pathVehiculos);
-        foreach(string dato in datos)
-        {
-            if(int.Parse(dato.Split(',')[4]) == id)//Si el IdTitular = id
+        if(File.Exists(pathVehiculos)){
+            List<int> ids_titular = new List<int>();
+            string[] datos = File.ReadAllLines(pathVehiculos);
+            foreach(string dato in datos)
             {
-                ids_titular.Add(int.Parse(dato.Split(',')[4]));//Agrego el id a la lista de ids
+                if(int.Parse(dato.Split(',')[4]) == id)//Si el IdTitular = id
+                {
+                    ids_titular.Add(int.Parse(dato.Split(',')[0]));//Agrego el id a la lista de ids
+                }
+            }
+            foreach(int idV in ids_titular)//Llamo a eliminar vehiculo del repositorios de vehiculos con los ID a eliminar
+            {
+                repoVehiculo.EliminarVehiculo(idV);
             }
         }
-        foreach(int idV in ids_titular)//Llamo a eliminar vehiculo del repositorios de vehiculos con los ID a eliminar
-        {
-            repoVehiculo.EliminarVehiculo(idV);
-        }
+        
     }
 
     public void EliminarTitular(int id)
@@ -226,5 +232,16 @@ public class RepositorioTitularTXT : IRepositorioTitular
             titulares.Add(titular);
         }
         return titulares;
+    }
+
+    public List<Titular> ListarTitularesConSusVehiculos () {
+        List<Titular> listaTitulares = ListarTitulares();
+        List<Vehiculo> listaVehiculos = repoVehiculo.ListarVehiculos();
+        foreach(Vehiculo v in listaVehiculos){
+            listaTitulares.Find(x => x.id==v.titular)?.vehiculos.Add(v);
+        }
+
+
+        return listaTitulares;
     }
 }
