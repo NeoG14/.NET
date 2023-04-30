@@ -5,12 +5,6 @@ public class RepositorioTitularTXT : IRepositorioTitular
 {
     readonly string _nombreArch = "titulares.txt";
     readonly string path = @".\titulares.txt";
-    readonly string pathVehiculos = @".\vehiculos.txt";
-    private readonly IRepositorioVehiculo repoVehiculo;
-    public RepositorioTitularTXT(IRepositorioVehiculo repo)
-    {
-        repoVehiculo = repo;
-    }
     private int GenerarId()
     {
         int id = 1;
@@ -30,14 +24,17 @@ public class RepositorioTitularTXT : IRepositorioTitular
     private bool PuedoAgregar(string dni) //Verificar que el dni es único
     {
         bool puedo = true;
-        string[] datos = File.ReadAllLines(path);//Leo todos los campos del txt
-        for(int i=0; i<datos.Length;i++)
+        if(File.Exists(path))
         {
-            //Recorro el arreglo y verifico si el dni es único
-            if(datos[i].Split(',')[3] == dni){
-                puedo = false;
-                return puedo; //Si hay algun dni igual corto la ejecucion y retorno
-            }   
+            string[] datos = File.ReadAllLines(path);//Leo todos los campos del txt
+            for(int i=0; i<datos.Length;i++)
+            {
+                //Recorro el arreglo y verifico si el dni es único
+                if(datos[i].Split(',')[3] == dni){
+                    puedo = false;
+                    return puedo; //Si hay algun dni igual corto la ejecucion y retorno
+                }   
+            }
         }
         return puedo;
     }
@@ -62,26 +59,6 @@ public class RepositorioTitularTXT : IRepositorioTitular
         }    
     }
 
-    private void EliminarVehiculos(int id)
-    {
-        if(File.Exists(pathVehiculos)){
-            List<int> ids_titular = new List<int>();
-            string[] datos = File.ReadAllLines(pathVehiculos);
-            foreach(string dato in datos)
-            {
-                if(int.Parse(dato.Split(',')[4]) == id)//Si el IdTitular = id
-                {
-                    ids_titular.Add(int.Parse(dato.Split(',')[0]));//Agrego el id a la lista de ids
-                }
-            }
-            foreach(int idV in ids_titular)//Llamo a eliminar vehiculo del repositorios de vehiculos con los ID a eliminar
-            {
-                repoVehiculo.EliminarVehiculo(idV);
-            }
-        }
-        
-    }
-
     public void EliminarTitular(int id)
     {
         bool encontre = false; string st;
@@ -100,7 +77,6 @@ public class RepositorioTitularTXT : IRepositorioTitular
         sr.Dispose();
         if(encontre)
         {
-            EliminarVehiculos(id);
             File.WriteAllLines(path,datos);
         } 
         else
@@ -233,7 +209,7 @@ public class RepositorioTitularTXT : IRepositorioTitular
         }
         return titulares;
     }
-
+/*
     public List<Titular> ListarTitularesConSusVehiculos () {
         List<Titular> listaTitulares = ListarTitulares();
         List<Vehiculo> listaVehiculos = repoVehiculo.ListarVehiculos();
@@ -244,4 +220,5 @@ public class RepositorioTitularTXT : IRepositorioTitular
 
         return listaTitulares;
     }
+    */
 }

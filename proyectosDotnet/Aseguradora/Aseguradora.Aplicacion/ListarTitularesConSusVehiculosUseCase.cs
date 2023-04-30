@@ -7,8 +7,10 @@ public class ListarTitularesConSusVehiculosUseCase
     {
         this._repo = repo;
     }
+    /*
     public List<Titular> Ejecutar()
     {
         return _repo.ListarTitularesConSusVehiculos();
     }
+    */
 }

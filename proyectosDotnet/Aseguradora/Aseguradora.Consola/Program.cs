@@ -3,21 +3,21 @@ using Aseguradora.Repositorios;
 
 //configuro las dependencias
 IRepositorioPoliza repoPoliza = new RepositorioPolizaTXT();
-IRepositorioVehiculo repoVehiculo = new RepositorioVehiculoTXT(repoPoliza);
-IRepositorioTitular repoTitular = new RepositorioTitularTXT(repoVehiculo);
+IRepositorioVehiculo repoVehiculo = new RepositorioVehiculoTXT();
+IRepositorioTitular repoTitular = new RepositorioTitularTXT();
 
 
 //creo los casos de uso
 //CU Titulares
 var AgregarTitular = new AgregarTitularUseCase(repoTitular);
 var ListarTitulares = new ListarTitularUseCase(repoTitular);
-var EliminarTitular = new EliminarTitularUseCase(repoTitular);
+var EliminarTitular = new EliminarTitularUseCase(repoTitular,repoVehiculo,repoPoliza);
 var ModificarTitular = new ModificarTitularUseCase(repoTitular);
 var ListarTitularesYVehiculos = new ListarTitularesConSusVehiculosUseCase(repoTitular);
 //CU Vehiculos
 var AgregarVehiculo = new AgregarVehiculoUseCase(repoVehiculo);
 var ListarVehiculos = new ListarVehiculosUseCase(repoVehiculo);
-var EliminarVehiculo = new EliminarVehiculoUseCase(repoVehiculo);
+var EliminarVehiculo = new EliminarVehiculoUseCase(repoVehiculo,repoPoliza);
 var ModificarVehiculo = new ModificarVehiculoUseCase(repoVehiculo);
 //CU Polizas
 var AgregarPoliza = new AgregarPolizaUseCase(repoPoliza);
@@ -36,9 +36,9 @@ var ModificarPoliza = new ModificarPolizaUseCase(repoPoliza);
 
 // Vehiculo v1 = new Vehiculo() {dominio="ASD934", marca="BMW", fabricacion="2008", titular=3};
 // Vehiculo v2 = new Vehiculo() {dominio="CQC001", marca="Renault", fabricacion="2008", titular=1};
-// Vehiculo v3 = new Vehiculo() {dominio="POX231", marca="Ford", fabricacion="2011", titular=5};
-// Vehiculo v4 = new Vehiculo() {dominio="FVC934", marca="Nissan", fabricacion="2020", titular=4};
-// Vehiculo v5 = new Vehiculo() {dominio="BFP346", marca="Peugeot", fabricacion="2005", titular=4};
+// Vehiculo v3 = new Vehiculo() {dominio="POX231", marca="Ford", fabricacion="2011", titular=1};
+// Vehiculo v4 = new Vehiculo() {dominio="FVC934", marca="Nissan", fabricacion="2020", titular=1};
+// Vehiculo v5 = new Vehiculo() {dominio="BFP346", marca="Peugeot", fabricacion="2005", titular=1};
 // PersistirVehiculo(v2);
 // PersistirVehiculo(v3);
 // PersistirVehiculo(v4);
@@ -47,18 +47,20 @@ var ModificarPoliza = new ModificarPolizaUseCase(repoPoliza);
 // Poliza p1 = new Poliza() {vehiculoAsegurado=2, valor = 350000, franquicia="Coches S.A", cobertura="Todo Riesgo", fechaInicio=new DateTime(2008, 3, 1), fechaFin= new DateTime(2009,3,1)};
 // Poliza p2 = new Poliza() {vehiculoAsegurado=3, valor = 350000, franquicia="Coches S.A", cobertura="Todo Riesgo", fechaInicio=new DateTime(2020, 3, 1), fechaFin= new DateTime(2021,4,4)};
 // Poliza p3 = new Poliza() {vehiculoAsegurado=4, valor = 350000, franquicia="Coches S.A", cobertura="Civil", fechaInicio=new DateTime(2013, 8, 9), fechaFin= new DateTime(2014,2,6)};
-// Poliza p4 = new Poliza() {vehiculoAsegurado=5, valor = 350000, franquicia="Coches S.A", cobertura="Responsabilidad Civil", fechaInicio=new DateTime(2020, 3, 7), fechaFin= new DateTime(2022,3,7)};
-// Poliza p5 = new Poliza() {vehiculoAsegurado=1, valor = 350000, franquicia="Coches S.A", cobertura="Todo Riesgo", fechaInicio=new DateTime(2008, 3, 1), fechaFin= new DateTime(2009,4,1)};
-// Poliza p6 = new Poliza() {vehiculoAsegurado=3, valor = 335000, franquicia="AUTOS S.A", cobertura="Todo Riesgo", fechaInicio=new DateTime(2020, 3, 1), fechaFin= new DateTime(2021,4,4)};
-//BajaVehiculo();
+Poliza p4 = new Poliza() {vehiculoAsegurado=2, valor = 350000, franquicia="Coches S.A", cobertura="Responsabilidad Civil", fechaInicio=new DateTime(2020, 3, 7), fechaFin= new DateTime(2022,3,7)};
+Poliza p5 = new Poliza() {vehiculoAsegurado=1, valor = 350000, franquicia="Coches S.A", cobertura="Todo Riesgo", fechaInicio=new DateTime(2008, 3, 1), fechaFin= new DateTime(2009,4,1)};
+Poliza p6 = new Poliza() {vehiculoAsegurado=3, valor = 335000, franquicia="AUTOS S.A", cobertura="Todo Riesgo", fechaInicio=new DateTime(2020, 3, 1), fechaFin= new DateTime(2021,4,4)};
 
-//BajaTitular(3);
+// PersistirPoliza(p4);
+// PersistirPoliza(p5);
+// PersistirPoliza(p6);
+BajaTitular(1);
 
 ListarLosTitulares();
 ListarLosVehiculos();
 ListarLasPolizas();
 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------");
-ListarLosTitularesConSusVehiculos();
+//ListarLosTitularesConSusVehiculos();
 
 
 void PersistirTitular(Titular t)
@@ -161,7 +163,7 @@ void ListarLasPolizas()
           Console.WriteLine(p);
      }
 }
-
+/*
 void ListarLosTitularesConSusVehiculos()
 {
      Console.WriteLine("Listando todos los titulares con sus vehículos");
@@ -175,5 +177,6 @@ void ListarLosTitularesConSusVehiculos()
           }
      }
 }
+*/
 
 Console.ReadLine();

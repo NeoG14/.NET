@@ -83,6 +83,37 @@ public class RepositorioPolizaTXT : IRepositorioPoliza
         }
     }
 
+    public List<int> IdPolizas(int idVehiculo)
+    {
+        List<int> ids_polizas = new List<int>();
+        if(File.Exists(path)) {
+            string[] datos = File.ReadAllLines(path);
+            foreach(string dato in datos)
+            {
+                if(int.Parse(dato.Split(',')[1]) == idVehiculo)//Si el IdVehiculo = id
+                {
+                    ids_polizas.Add(int.Parse(dato.Split(',')[0]));//Agrego el id a la lista de ids
+                }
+            }
+            return ids_polizas; 
+        }
+         return null;
+    }
+
+    public void EliminarPolizasVehiculo(int idVehiculo)
+    {
+        List <int> ids = IdPolizas(idVehiculo);
+        if(ids!=null)
+        {
+            foreach(int id in ids)
+            {
+                EliminarPoliza(id);
+            }
+        }
+
+            
+    }
+
     private string modificar(string st)
     {
         string[] poliza = st.Split(',');

@@ -6,12 +6,6 @@ public class RepositorioVehiculoTXT : IRepositorioVehiculo
     readonly string _nombreArch = "vehiculos.txt";
     readonly string path = @".\vehiculos.txt";
     readonly string pathTitulares = @".\titulares.txt";
-    readonly string pathPolizas = @".\polizas.txt";
-    private readonly IRepositorioPoliza repoPoliza;
-    public RepositorioVehiculoTXT(IRepositorioPoliza repo)
-    {
-        repoPoliza = repo;
-    }
 
     private int GenerarId()
     {
@@ -66,25 +60,6 @@ public class RepositorioVehiculoTXT : IRepositorioVehiculo
         }   
     }
 
-    private void EliminarPolizas(int idVehiculo)
-    {
-        if(File.Exists(pathPolizas)) {
-            List<int> ids_polizas = new List<int>();
-            string[] datos = File.ReadAllLines(pathPolizas);
-            foreach(string dato in datos)
-            {
-                if(int.Parse(dato.Split(',')[1]) == idVehiculo)//Si el IdVehiculo = id
-                {
-                    ids_polizas.Add(int.Parse(dato.Split(',')[0]));//Agrego el id a la lista de ids
-                }
-            }
-            foreach(int idP in ids_polizas)//Llamo a eliminar vehiculo del repositorios de vehiculos con los ID a eliminar
-            {
-                repoPoliza.EliminarPoliza(idP);
-            }
-        }
-        
-    }
 
     public void EliminarVehiculo(int id)
     {
@@ -104,7 +79,6 @@ public class RepositorioVehiculoTXT : IRepositorioVehiculo
         sr.Dispose();
         if(encontre)
         {
-            EliminarPolizas(id);
             File.WriteAllLines(path,datos);
         }
             
@@ -113,6 +87,34 @@ public class RepositorioVehiculoTXT : IRepositorioVehiculo
             string message = "ID no encontrado";
             throw new IdNotFoundException(message);
         }
+    }
+
+    public List<int> IdVehiculos(int idTitular)
+    {
+        
+        if(File.Exists(path)){
+            List<int> ids_titular = new List<int>();
+            string[] datos = File.ReadAllLines(path);
+            foreach(string dato in datos)
+            {
+                if(int.Parse(dato.Split(',')[4]) == idTitular)//Si el IdTitular = id
+                {
+                    ids_titular.Add(int.Parse(dato.Split(',')[0]));//Agrego el id a la lista de ids
+                }
+            }
+            return ids_titular;
+        }
+        return null;
+    }
+
+    public void EliminarVehiculosTitular(int idTitular)
+    {
+        List<int> ids = IdVehiculos(idTitular);
+        if(ids!=null)
+            foreach(int id in ids)
+            {
+                EliminarVehiculo(id);
+            }
     }
 
     private bool ExisteTitular(int titularId) //Verificar que el id de titular exista
