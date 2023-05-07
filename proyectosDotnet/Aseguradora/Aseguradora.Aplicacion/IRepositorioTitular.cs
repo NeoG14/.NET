@@ -4,9 +4,9 @@ public interface IRepositorioTitular
 {
     void AgregarTitular(Titular titular);
     void EliminarTitular(int dni);
-    void ModificarTitular(string dni);
+    void ModificarTitular(Titular t);
     List<Titular> ListarTitulares();
-    //List<Titular> ListarTitularesConSusVehiculos ();
+    List<Titular> ListarTitularesConSusVehiculos (List<Titular> listT,List<Vehiculo> listV);
  
     
 }

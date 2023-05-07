@@ -1,5 +1,6 @@
 ﻿using Aseguradora.Aplicacion;
 using Aseguradora.Repositorios;
+using System.Text.RegularExpressions;
 
 //configuro las dependencias
 IRepositorioPoliza repoPoliza = new RepositorioPolizaTXT();
@@ -13,7 +14,7 @@ var AgregarTitular = new AgregarTitularUseCase(repoTitular);
 var ListarTitulares = new ListarTitularUseCase(repoTitular);
 var EliminarTitular = new EliminarTitularUseCase(repoTitular,repoVehiculo,repoPoliza);
 var ModificarTitular = new ModificarTitularUseCase(repoTitular);
-var ListarTitularesYVehiculos = new ListarTitularesConSusVehiculosUseCase(repoTitular);
+var ListarTitularesYVehiculos = new ListarTitularesConSusVehiculosUseCase(repoTitular,repoVehiculo);
 //CU Vehiculos
 var AgregarVehiculo = new AgregarVehiculoUseCase(repoVehiculo);
 var ListarVehiculos = new ListarVehiculosUseCase(repoVehiculo);
@@ -25,43 +26,30 @@ var ListarPolizas = new ListarPolizasUseCase(repoPoliza);
 var EliminarPoliza = new EliminarPolizaUseCase(repoPoliza);
 var ModificarPoliza = new ModificarPolizaUseCase(repoPoliza);
 
-
-//ejecuto los casos de uso
-//AgregarTitular.Ejecutar(new Titular() {dni="41899909", apellido="Alvarez", nombre="Nicolas", telefono="221 5595439", direccion="Calle 2 n°432", correo="nicolaplatajob@gmail.com"});
-//AgregarTitular.Ejecutar(new Titular() {dni="44768309", apellido="Jorge", nombre="Gimenez", telefono="221 3242523", direccion="Calle 89 n°456", correo="correo@gmail.com"});
-//AgregarTitular.Ejecutar(new Titular() {dni="44721351", apellido="Rocio", nombre="Lunge", telefono="3755 3232798", direccion="Calle Siempre viva 742", correo="correito@gmail.com"});
-//AgregarTitular.Ejecutar(new Titular() {dni="4356369", apellido="Son", nombre="Goku", telefono="221 32434353", direccion="Calle 33 n° 721", correo="goku@correo.com"});
-//Titular t = new Titular() {dni="4315342", apellido="David", nombre="Folkz", telefono="422 3223252", direccion="Av italia 428", correo="david@correo2.com"};
+// Menu de la aplicación
+//Titular t = new Titular {nombre="PEPE", apellido="TORRES",dni="3434424",direccion="LA PLATA",correo="Corro@correo@gmail.com", telefono="221454464"};
 //PersistirTitular(t);
+menu();
 
-// Vehiculo v1 = new Vehiculo() {dominio="ASD934", marca="BMW", fabricacion="2008", titular=3};
-// Vehiculo v2 = new Vehiculo() {dominio="CQC001", marca="Renault", fabricacion="2008", titular=1};
-// Vehiculo v3 = new Vehiculo() {dominio="POX231", marca="Ford", fabricacion="2011", titular=1};
-// Vehiculo v4 = new Vehiculo() {dominio="FVC934", marca="Nissan", fabricacion="2020", titular=1};
-// Vehiculo v5 = new Vehiculo() {dominio="BFP346", marca="Peugeot", fabricacion="2005", titular=1};
-// PersistirVehiculo(v2);
-// PersistirVehiculo(v3);
-// PersistirVehiculo(v4);
-// PersistirVehiculo(v5);
-
-// Poliza p1 = new Poliza() {vehiculoAsegurado=2, valor = 350000, franquicia="Coches S.A", cobertura="Todo Riesgo", fechaInicio=new DateTime(2008, 3, 1), fechaFin= new DateTime(2009,3,1)};
-// Poliza p2 = new Poliza() {vehiculoAsegurado=3, valor = 350000, franquicia="Coches S.A", cobertura="Todo Riesgo", fechaInicio=new DateTime(2020, 3, 1), fechaFin= new DateTime(2021,4,4)};
-// Poliza p3 = new Poliza() {vehiculoAsegurado=4, valor = 350000, franquicia="Coches S.A", cobertura="Civil", fechaInicio=new DateTime(2013, 8, 9), fechaFin= new DateTime(2014,2,6)};
-Poliza p4 = new Poliza() {vehiculoAsegurado=2, valor = 350000, franquicia="Coches S.A", cobertura="Responsabilidad Civil", fechaInicio=new DateTime(2020, 3, 7), fechaFin= new DateTime(2022,3,7)};
-Poliza p5 = new Poliza() {vehiculoAsegurado=1, valor = 350000, franquicia="Coches S.A", cobertura="Todo Riesgo", fechaInicio=new DateTime(2008, 3, 1), fechaFin= new DateTime(2009,4,1)};
-Poliza p6 = new Poliza() {vehiculoAsegurado=3, valor = 335000, franquicia="AUTOS S.A", cobertura="Todo Riesgo", fechaInicio=new DateTime(2020, 3, 1), fechaFin= new DateTime(2021,4,4)};
-
-// PersistirPoliza(p4);
-// PersistirPoliza(p5);
-// PersistirPoliza(p6);
-BajaTitular(1);
-
-ListarLosTitulares();
-ListarLosVehiculos();
-ListarLasPolizas();
-Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------");
-//ListarLosTitularesConSusVehiculos();
-
+// Metodos para presentar el menu
+void cargarTitular()
+{
+     Titular t = new Titular();
+     Console.Write("Nombre: ");
+     t.nombre = Console.ReadLine()?? "";
+     Console.Write("Apellido: ");
+     t.apellido = Console.ReadLine()?? "";
+     Console.Write("DNI: ");
+     t.dni = Console.ReadLine()?? "";
+     Console.Write("Telefono: ");
+     t.telefono = Console.ReadLine()?? "";
+     Console.Write("Dirección: ");
+     t.direccion = Console.ReadLine()?? "";
+     Console.Write("Correo: ");
+     t.correo = Console.ReadLine()?? "";
+     Console.WriteLine();
+     PersistirTitular(t);
+}
 
 void PersistirTitular(Titular t)
 {
@@ -75,6 +63,30 @@ void PersistirTitular(Titular t)
      }
 }
 
+
+void cargarVehiculo()
+{
+     Vehiculo v = new Vehiculo();
+     bool patente = false;
+     while(!patente)
+     {
+          Console.Write("Dominio: ");
+          v.dominio = Console.ReadLine()?? "";
+          if (Regex.IsMatch(v.dominio, "^[a-zA-Z0-9]*$")) 
+               patente = true;
+          else 
+            Console.WriteLine("La patente debe ser Alfanumerica");
+     }
+
+     Console.Write("Marca: ");
+     v.marca = Console.ReadLine()?? "";
+     Console.Write("Fabricacion: ");
+     v.fabricacion = Console.ReadLine()?? "";
+     Console.Write("Titular: ");
+     v.titular = int.Parse(Console.ReadLine()?? "");
+     PersistirVehiculo(v);
+}
+
 void PersistirVehiculo(Vehiculo v)
 {
      try
@@ -85,6 +97,40 @@ void PersistirVehiculo(Vehiculo v)
      {
           Console.WriteLine(e.Message);
      }
+}
+
+void cargarPoliza()
+{
+     bool cobertura = false;
+     bool fecha = false;
+     Poliza p = new Poliza();
+     Console.Write("Vehiculo Asegurado (id): ");
+     p.vehiculoAsegurado = int.Parse(Console.ReadLine()?? "-1");
+     Console.Write("Valor: ");
+     p.valor = decimal.Parse(Console.ReadLine()?? "0");
+     Console.Write("Franquicia: ");
+     p.franquicia = Console.ReadLine()?? "";
+     while(!cobertura)
+     {
+          Console.Write("Cobertura: ");
+          p.cobertura = Console.ReadLine()?? "";
+          if(p.cobertura.Equals("Responsabilidad Civil") || p.cobertura.Equals("Todo Riesgo"))
+               cobertura=true;
+          else
+               Console.WriteLine("Solo se admite Responsabilidad Civil o Todo Riesgo");
+     }
+     while(!fecha)
+     {
+          Console.Write("Fecha Inicio: ");
+          p.fechaInicio = DateTime.Parse(Console.ReadLine()?? "");
+          Console.Write("Fecha Fin: ");
+          p.fechaFin = DateTime.Parse(Console.ReadLine()?? "");
+          if((p.fechaFin.CompareTo(p.fechaInicio)>0))
+               fecha = true;
+          else
+               Console.WriteLine("La fecha de inicio no puede superar a la fecha de fin");
+     }
+     PersistirPoliza(p);
 }
 
 void PersistirPoliza(Poliza p)
@@ -137,46 +183,283 @@ void BajaPoliza(int id)
 void ListarLosTitulares()
 {
      Console.WriteLine("Listando todos los titulares de vehículos");
-     List<Titular> lista = ListarTitulares.Ejecutar();
-     foreach (Titular t in lista)
-     {
-          Console.WriteLine(t);
-     }
+     List<Titular>? lista = ListarTitulares?.Ejecutar();
+     if(lista != null)
+          foreach (Titular t in lista)
+               Console.WriteLine(t);
 }
 
 void ListarLosVehiculos()
 {
      Console.WriteLine("Listando todos los Vehiculos");
-     List<Vehiculo> lista = ListarVehiculos.Ejecutar();
-     foreach (Vehiculo v in lista)
-     {
-          Console.WriteLine(v);
-     }
+     List<Vehiculo>? lista = ListarVehiculos?.Ejecutar();
+     if(lista != null)
+          foreach (Vehiculo v in lista)
+               Console.WriteLine(v);
+     
 }
 
 void ListarLasPolizas()
 {
      Console.WriteLine("Listando todas las Polizas");
-     List<Poliza> lista = ListarPolizas.Ejecutar();
+     List<Poliza>? lista = ListarPolizas?.Ejecutar();
+     if(lista != null)
      foreach (Poliza p in lista)
-     {
           Console.WriteLine(p);
-     }
 }
-/*
+
 void ListarLosTitularesConSusVehiculos()
 {
      Console.WriteLine("Listando todos los titulares con sus vehículos");
-     List<Titular> lista = ListarTitularesYVehiculos.Ejecutar();
-     foreach (Titular t in lista)
+     List<Titular>? lista = ListarTitularesYVehiculos?.Ejecutar();
+     if(lista != null)
      {
-          Console.WriteLine(t);
-          foreach(Vehiculo v in t.vehiculos)
+          foreach (Titular t in lista)
           {
-               Console.WriteLine(v);
+               Console.WriteLine(t);
+               if(t.vehiculos.Count>0)
+                    Console.WriteLine("Vehiculos: ");   
+               foreach(Vehiculo v in t.vehiculos)
+               {
+                    Console.WriteLine(v);
+               }
+               Console.WriteLine("------------------");
           }
+     }   
+}
+
+void modificarTitular()
+{
+     try
+     {
+          Titular t = new Titular();
+          Console.Write("ID: ");
+          t.id = int.Parse(Console.ReadLine()?? "-1");
+          Console.Write("Nombre: ");
+          t.nombre = Console.ReadLine()?? "";
+          Console.Write("Apellido: ");
+          t.apellido = Console.ReadLine()?? "";
+          Console.Write("DNI: ");
+          t.dni = Console.ReadLine()?? "";
+          Console.Write("Telefono: ");
+          t.telefono = Console.ReadLine()?? "";
+          Console.Write("Dirección: ");
+          t.direccion = Console.ReadLine()?? "";
+          Console.Write("Correo: ");
+          t.correo = Console.ReadLine()?? "";
+          ModificarTitular?.Ejecutar(t);
+
+     }
+     catch (Exception e)
+     {
+          
+          Console.WriteLine(e.Message);
+     }
+     
+}
+void modificarVehiculo()
+{
+     try
+     {
+          Vehiculo v = new Vehiculo();
+          Console.Write("ID: ");
+          v.id = int.Parse(Console.ReadLine()?? "-1");
+          Console.Write("Dominio: ");
+          v.dominio = Console.ReadLine()?? "";
+          Console.Write("Marca: ");
+          v.marca = Console.ReadLine()?? "";
+          Console.Write("Fabricacion: ");
+          v.fabricacion = Console.ReadLine()?? "";
+          Console.Write("Titular: ");
+          v.titular = int.Parse(Console.ReadLine()?? "");
+          ModificarVehiculo?.Ejecutar(v);
+     }
+     catch (Exception e)
+     {
+          Console.WriteLine(e.Message);
      }
 }
-*/
+void modificarPoliza()
+{
+     try
+     {
+          Poliza p = new Poliza();
+          Console.Write("ID: ");
+          p.id = int.Parse(Console.ReadLine()?? "-1");
+          Console.Write("Vehiculo Asegurado (id): ");
+          p.vehiculoAsegurado = int.Parse(Console.ReadLine()?? "-1");
+          Console.Write("Valor: ");
+          p.valor = decimal.Parse(Console.ReadLine()?? "0");
+          Console.Write("Franquicia: ");
+          p.franquicia = Console.ReadLine()?? "";
+          Console.Write("Cobertura: ");
+          p.cobertura = Console.ReadLine()?? "";
+          Console.Write("Fecha Inicio: ");
+          p.fechaInicio = DateTime.Parse(Console.ReadLine()?? "");
+          Console.Write("Fecha Fin: ");
+          p.fechaFin = DateTime.Parse(Console.ReadLine()?? "");
+          ModificarPoliza?.Ejecutar(p);      
+     }
+     catch (Exception e)
+     {
+          
+          Console.WriteLine(e.Message);
+     }  
+}
 
+void agregar()
+{
+     Console.WriteLine("Seleccione una opcion");
+     Console.WriteLine("1-Agregar Titular");
+     Console.WriteLine("2-Agregar Vehiculo");
+     Console.WriteLine("3-Agregar Poliza");
+     Console.Write("Opcion: ");
+     int opc = int.Parse(Console.ReadLine()?? "-1");
+     switch (opc)
+     {
+          case 1:
+               cargarTitular();
+               break;
+          case 2: 
+               cargarVehiculo();
+               break;
+          case 3: 
+               cargarPoliza();
+               break;
+          default:
+               Console.WriteLine("Opcion Incorrecta");
+               break;
+     }
+}
+
+void eliminar()
+{
+     Console.WriteLine("Seleccione una opcion");
+     Console.WriteLine("1-Eliminar Titular");
+     Console.WriteLine("2-Eliminar Vehiculo");
+     Console.WriteLine("3-Eliminar Poliza");
+     Console.Write("Opcion: ");
+     int id = 0;
+     int opc = int.Parse(Console.ReadLine()?? "-1");
+
+     switch (opc)
+     {
+          case 1: 
+               Console.Write("Ingrese ID de Titular a eliminar: ");
+               id = int.Parse(Console.ReadLine()??"-1");
+               BajaTitular(id);
+               break;
+          case 2: 
+               Console.Write("Ingrese ID de Vehiculo a eliminar: ");
+               id = int.Parse(Console.ReadLine()??"-1");
+               BajaVehiculo(id);
+               break;
+          case 3: 
+               Console.Write("Ingrese ID de Poliza a eliminar: ");
+               id = int.Parse(Console.ReadLine()??"-1");
+               BajaPoliza(id);
+               break;
+          default:
+               Console.WriteLine("Opcion Incorrecta");
+               break;
+     }
+}
+
+void modificar()
+{
+     Console.WriteLine("Seleccione una opcion");
+     Console.WriteLine("1-Modificar Titular");
+     Console.WriteLine("2-Modificar Vehiculo");
+     Console.WriteLine("3-Modificar Poliza");
+     Console.Write("Opcion: ");
+     int opc = int.Parse(Console.ReadLine()??"-1");
+     switch (opc)
+     {
+          case 1: 
+               modificarTitular();
+               break;
+          case 2: 
+               modificarVehiculo();
+               break;
+          case 3: 
+               modificarPoliza();
+               break;
+          default:
+               Console.WriteLine("Opcion Incorrecta");
+               break;
+     }
+}
+
+void listar()
+{
+     Console.WriteLine("Seleccione una opcion");
+     Console.WriteLine("1-Listar Titulares");
+     Console.WriteLine("2-Listar Vehiculos");
+     Console.WriteLine("3-Listar Polizas");
+     Console.WriteLine("4-Listar Titulares con sus Vehiculos");
+     Console.Write("Opcion: ");
+     int opc = int.Parse(Console.ReadLine()??"-1");
+     switch (opc)
+     {
+          case 1: 
+               ListarLosTitulares();
+               break;
+          case 2: 
+               ListarLosVehiculos();
+               break;
+          case 3: 
+               ListarLasPolizas();
+               break;
+          case 4: 
+               ListarLosTitularesConSusVehiculos();
+               break;
+          default:
+               Console.WriteLine("Opcion Incorrecta");
+               break;
+     }
+}
+
+void menu()
+{
+    int opc = -1;
+    while(opc != 0)
+    {
+          Console.WriteLine("Ingrese Una Opcion");
+          Console.WriteLine("1-Agregar");
+          Console.WriteLine("2-Eliminar");
+          Console.WriteLine("3-Modificar");
+          Console.WriteLine("4-Listar");
+          Console.WriteLine("0-Salir");
+          Console.Write("Opcion: ");
+          opc = int.Parse(Console.ReadLine()??"-1");
+          switch (opc)
+          {
+               case 0:
+                    Console.WriteLine("Saliendo...");
+                    break;
+               case 1:
+                    Console.WriteLine();
+                    agregar();
+                    break;
+               case 2:
+                    Console.WriteLine();
+                    eliminar();
+                    break;
+               case 3:
+                    Console.WriteLine();
+                    modificar();
+                    break;
+               case 4:
+                    Console.WriteLine();
+                    listar();
+                    break;
+               default:
+                    Console.WriteLine("Opcion Incorrecta");
+                    break;
+          }
+          Console.WriteLine("----------------");
+    }
+}
+
+//Para que no se cierre la ventana
 Console.ReadLine();

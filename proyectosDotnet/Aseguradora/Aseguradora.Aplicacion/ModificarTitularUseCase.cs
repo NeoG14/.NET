@@ -7,8 +7,8 @@ public class ModificarTitularUseCase
     {
         this._repo = repo;
     }
-    public void Ejecutar(string dni)
+    public void Ejecutar(Titular t)
     {
-        _repo.ModificarTitular(dni);
+        _repo.ModificarTitular(t);
     }
 }

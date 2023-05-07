@@ -11,7 +11,7 @@ public class RepositorioVehiculoTXT : IRepositorioVehiculo
     {
         int id = 1;
         FileInfo archivo = new FileInfo(path);
-        if(!archivo.Exists) //Si el archivo no existe retorna ID 1 para agergar el primer producto
+        if(!archivo.Exists | archivo.Length==0) //Si el archivo no existe retorna ID 1 para agergar el primer producto
             return id;
         else //Si el archivo existe
         {
@@ -91,9 +91,8 @@ public class RepositorioVehiculoTXT : IRepositorioVehiculo
 
     public List<int> IdVehiculos(int idTitular)
     {
-        
+        List<int> ids_titular = new List<int>();
         if(File.Exists(path)){
-            List<int> ids_titular = new List<int>();
             string[] datos = File.ReadAllLines(path);
             foreach(string dato in datos)
             {
@@ -102,15 +101,14 @@ public class RepositorioVehiculoTXT : IRepositorioVehiculo
                     ids_titular.Add(int.Parse(dato.Split(',')[0]));//Agrego el id a la lista de ids
                 }
             }
-            return ids_titular;
         }
-        return null;
+        return ids_titular;
     }
 
     public void EliminarVehiculosTitular(int idTitular)
     {
         List<int> ids = IdVehiculos(idTitular);
-        if(ids!=null)
+        if(ids.Count>0)
             foreach(int id in ids)
             {
                 EliminarVehiculo(id);
@@ -132,83 +130,22 @@ public class RepositorioVehiculoTXT : IRepositorioVehiculo
         return puedo;
     }
 
-    private string modificar(string st)
-    {
-        string[] vehiculo = st.Split(',');
-        int opc = -1;
-        string mod = "";
-        while(opc != 0)
-        {
-            Console.WriteLine("Seleccione campo a modificar");
-            Console.WriteLine("1-Dominio");
-            Console.WriteLine("2-Marca");
-            Console.WriteLine("3-Año de fabricación");
-            Console.WriteLine("4-Titular");
-            Console.WriteLine("0-Terminar");
-            Console.WriteLine();
-            Console.Write("Opcion: "); opc = int.Parse(Console.ReadLine()?? "7");
-
-            switch (opc)
-            {
-                case 1:
-                    Console.Write("Ingrese Dominio: ");
-                    mod = Console.ReadLine()?? "";
-                    if(mod != "") 
-                        vehiculo[1]=mod;
-                    else
-                        Console.WriteLine("No puede ir vacio");
-                    break;
-                case 2:
-                    Console.Write("Ingrese Marca: ");
-                    mod = Console.ReadLine()?? "";
-                    if(mod != "") 
-                        vehiculo[2]=mod;
-                    else
-                        Console.WriteLine("No puede ir vacio");
-                    break;
-                case 3:
-                    Console.Write("Ingrese Año de fabricación: ");
-                    mod = Console.ReadLine()?? "";
-                    if(mod != "") 
-                        vehiculo[3]=mod;
-                    else
-                        Console.WriteLine("No puede ir vacio");
-                    break;
-                case 4:
-                    Console.Write("Ingrese Id de Titular: ");
-                    mod = Console.ReadLine()?? "";
-                    if( ExisteTitular(int.Parse(mod))  && mod!="") 
-                        vehiculo[4]=mod;
-                    else
-                        Console.WriteLine("El Id ingresado no figura entre los titulares o El campo es vacio");
-                    break;
-                case 0: Console.WriteLine();
-                    break;
-                default:
-                    Console.WriteLine("Opcion no valida");
-                    break;
-            }
-        }
-        return $"{vehiculo[0]},{vehiculo[1]},{vehiculo[2]},{vehiculo[3]},{vehiculo[4]}";
-    }
-    public void ModificarVehiculo(int id)
+    public void ModificarVehiculo(Vehiculo v)
     {
         bool encontre = false;
         int pos = 0;
         string[] datos = File.ReadAllLines(path);
-        string st = "";
         while(!encontre && pos<datos.Length)
         {
-            if(int.Parse(datos[pos].Split(',')[0]) == id)
+            if(int.Parse(datos[pos].Split(',')[0]) == v.id)
             {
                 encontre = true;
-                st = datos[pos];
             }
             pos++;
         }
         if(encontre)
         {
-            datos[pos-1] = modificar(st);
+            datos[pos-1] = $"{v.id},{v.dominio},{v.marca},{v.fabricacion},{v.titular}";
             File.WriteAllLines(path,datos);
         }else
         {

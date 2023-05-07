@@ -7,8 +7,8 @@ public class ModificarPolizaUseCase
     {
         this._repo = repo;
     }
-    public void Ejecutar(int id)
+    public void Ejecutar(Poliza p)
     {
-        _repo.ModificarPoliza(id);
+        _repo.ModificarPoliza(p);
     }
 }
