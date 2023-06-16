@@ -1,0 +1,50 @@
+======================================================
+     Diapositivas 4 - Archivo fuente: Program.cs
+======================================================
+
+int a = 17;
+int b = 23;
+Swap(ref a, ref b);
+Console.WriteLine($"a={a} y b={b}");
+
+
+======================================================
+     Diapositivas 23	 - Archivo fuente: Program.cs
+======================================================
+//Solucionar errores de compilación
+int i = Maximo(100, 55);
+Console.WriteLine(i);
+string st = Maximo("hola", "mundo");
+Console.WriteLine(st);
+Console.WriteLine(Maximo('A','B'));
+
+IComparable Maximo(IComparable a, IComparable b)
+{
+   if (a.CompareTo(b) > 0)
+   {
+      return a;
+   }
+   return b;
+}
+
+	
+======================================================
+     Diapositivas 27 - Archivo fuente: Program.cs
+======================================================
+
+int i = Maximo<int>(100, 55);
+Console.WriteLine(i);
+string st = Maximo<string>("hola", "mundo");
+Console.WriteLine(st);
+Console.WriteLine(Maximo<char>('A', 'B'));
+
+T Maximo<T>(T a, T b)
+{
+   if (a.CompareTo(b) > 0)
+   {
+       return a;
+   }
+   return b;
+}
+
+

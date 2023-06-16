@@ -1,0 +1,124 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\AseguradoraFinal\\AseguradoraFinal.Repositorios\\AseguradoraFinal.Repositorios.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\AseguradoraFinal\\AseguradoraFinal.Aplicacion\\AseguradoraFinal.Aplicacion.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\AseguradoraFinal\\AseguradoraFinal.Aplicacion\\AseguradoraFinal.Aplicacion.csproj",
+        "projectName": "AseguradoraFinal.Aplicacion",
+        "projectPath": "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\AseguradoraFinal\\AseguradoraFinal.Aplicacion\\AseguradoraFinal.Aplicacion.csproj",
+        "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\AseguradoraFinal\\AseguradoraFinal.Aplicacion\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\AseguradoraFinal\\AseguradoraFinal.Repositorios\\AseguradoraFinal.Repositorios.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\AseguradoraFinal\\AseguradoraFinal.Repositorios\\AseguradoraFinal.Repositorios.csproj",
+        "projectName": "AseguradoraFinal.Repositorios",
+        "projectPath": "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\AseguradoraFinal\\AseguradoraFinal.Repositorios\\AseguradoraFinal.Repositorios.csproj",
+        "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\AseguradoraFinal\\AseguradoraFinal.Repositorios\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\AseguradoraFinal\\AseguradoraFinal.Aplicacion\\AseguradoraFinal.Aplicacion.csproj": {
+                "projectPath": "C:\\Users\\nicol\\Documents\\GitHub\\.NET\\proyectosDotnet\\AseguradoraFinal\\AseguradoraFinal.Aplicacion\\AseguradoraFinal.Aplicacion.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

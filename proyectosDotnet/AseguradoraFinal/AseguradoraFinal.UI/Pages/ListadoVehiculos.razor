@@ -1,0 +1,71 @@
+@page "/vehiculos"
+@inject ListarVehiculosUseCase ListarVehiculosUseCase
+@inject EliminarVehiculoUseCase EliminarVehiculoUseCase
+@inject NavigationManager Navegador
+
+<DialogoConfirmacion @ref="dialogo2" OnConfirmado="Eliminar"/>
+
+<table class="table">
+   <thead>
+       <tr>
+           <th>ID</th>
+           <th>PATENTE</th>
+           <th>MARCA</th>
+           <th>FABRICACIÓN</th>
+           <th>ID TITULAR</th>
+       </tr>
+   </thead>
+   <tbody>
+       @foreach (var v in listaVehiculos)
+       {
+           <tr>
+               <td>@v.id</td>
+               <td>@v.dominio</td>
+               <td>@v.marca</td>
+               <td>@v.fabricacion</td>
+               <td>@v.titularId</td>
+               <td>
+                    <button class="btn btn-primary">
+                        <span class="oi oi-pencil" @onclick="()=>ModificarVehiculo(v)"></span>
+                    </button>
+                    <button class="btn btn-danger" @onclick="()=>ConfirmarEliminacion(v)">
+                        <span class="oi oi-trash"></span>
+                    </button>
+                </td>
+           </tr>
+       }
+   </tbody>
+</table>
+
+@code{
+    List<Vehiculo> listaVehiculos = new List<Vehiculo>();
+    protected override void OnInitialized()
+    {
+        listaVehiculos = ListarVehiculosUseCase.Ejecutar();
+    }
+
+    DialogoConfirmacion dialogo2 = null!;
+    Vehiculo? _vehiculoParaEliminar = null;
+    private void ConfirmarEliminacion(Vehiculo v)
+    {
+        _vehiculoParaEliminar = v;
+        dialogo2.Mensaje = $"¿Desea eliminar al vehiculo con patente {v.dominio}?";
+        dialogo2.Mostrar();
+    }
+    private void Eliminar()
+    {
+        if (_vehiculoParaEliminar != null)
+        {
+            EliminarVehiculoUseCase.Ejecutar(_vehiculoParaEliminar.id);
+            listaVehiculos = ListarVehiculosUseCase.Ejecutar(); //se actualiza la lista de vehiculos
+        }
+    }
+
+    void ModificarVehiculo(Vehiculo v)
+    {
+        Navegador.NavigateTo($"vehiculo/{v.id}");
+    }
+
+
+    
+}

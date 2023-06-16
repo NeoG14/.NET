@@ -1,0 +1,71 @@
+@page "/siniestros"
+@inject ListarSiniestrosUseCase ListarSiniestrosUseCase
+@inject EliminarSiniestroUseCase EliminarSiniestroUseCase
+@inject NavigationManager Navegador
+
+<DialogoConfirmacion @ref="dialogo4" OnConfirmado="Eliminar"/>
+
+<table class="table">
+   <thead>
+       <tr>
+           <th>ID</th>
+           <th>ID POLIZA</th>
+           <th>INGRESO</th>
+           <th>OCURRENCIA</th>
+           <th>DIRECCIÓN</th>
+           <th>DESCRIPCIÓN</th>
+       </tr>
+   </thead>
+   <tbody>
+       @foreach (var s in listaSiniestros)
+       {
+           <tr>
+               <td>@s.id</td>
+               <td>@s.polizaId</td>
+               <td>@s.ingreso</td>
+               <td>@s.ocurrencia</td>
+               <td>@s.direccion</td>
+               <td>@s.descripcion</td>
+               <td>
+                    <button class="btn btn-primary">
+                        <span class="oi oi-pencil" @onclick="()=>ModificarSiniestro(s)"></span>
+                    </button>
+                    <button class="btn btn-danger" @onclick="()=>ConfirmarEliminacion(s)">
+                        <span class="oi oi-trash"></span>
+                    </button>
+                </td>
+           </tr>
+       }
+   </tbody>
+</table>
+
+@code{
+    List<Siniestro> listaSiniestros = new List<Siniestro>();
+    protected override void OnInitialized()
+    {
+        listaSiniestros = ListarSiniestrosUseCase.Ejecutar();
+    }
+
+    DialogoConfirmacion dialogo4 = null!;
+    Siniestro? _SiniestroParaEliminar = null;
+    private void ConfirmarEliminacion(Siniestro s)
+    {
+        _SiniestroParaEliminar = s;
+        dialogo4.Mensaje = $"¿Desea eliminar la Siniestro con ID {s.id}?";
+        dialogo4.Mostrar();
+    }
+    private void Eliminar()
+    {
+        if (_SiniestroParaEliminar != null)
+        {
+            EliminarSiniestroUseCase.Ejecutar(_SiniestroParaEliminar.id);
+            listaSiniestros = ListarSiniestrosUseCase.Ejecutar();
+        }
+    }
+
+    void ModificarSiniestro(Siniestro s)
+    {
+        Navegador.NavigateTo($"siniestro/{s.id}");
+    }
+
+}

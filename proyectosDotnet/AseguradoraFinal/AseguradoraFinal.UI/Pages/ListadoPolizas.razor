@@ -1,0 +1,73 @@
+@page "/polizas"
+@inject ListarPolizasUseCase ListarPolizasUseCase
+@inject EliminarPolizaUseCase EliminarPolizaUseCase
+@inject NavigationManager Navegador
+
+<DialogoConfirmacion @ref="dialogo3" OnConfirmado="Eliminar"/>
+
+<table class="table">
+   <thead>
+       <tr>
+           <th>ID</th>
+           <th>ID VEHICULO</th>
+           <th>VALOR</th>
+           <th>FRANQUICIA</th>
+           <th>COBERTURA</th>
+           <th>FECHA INICIO</th>
+           <th>FECHA FIN</th>
+       </tr>
+   </thead>
+   <tbody>
+       @foreach (var p in listaPolizas)
+       {
+           <tr>
+               <td>@p.id</td>
+               <td>@p.vehiculoAseguradoId</td>
+               <td>@p.valor</td>
+               <td>@p.franquicia</td>
+               <td>@p.cobertura</td>
+               <td>@p.fechaInicio</td>
+               <td>@p.fechaFin</td>
+               <td>
+                    <button class="btn btn-primary">
+                        <span class="oi oi-pencil" @onclick="()=>ModificarPoliza(p)"></span>
+                    </button>
+                    <button class="btn btn-danger" @onclick="()=>ConfirmarEliminacion(p)">
+                        <span class="oi oi-trash"></span>
+                    </button>
+                </td>
+           </tr>
+       }
+   </tbody>
+</table>
+
+@code{
+    List<Poliza> listaPolizas = new List<Poliza>();
+    protected override void OnInitialized()
+    {
+        listaPolizas = ListarPolizasUseCase.Ejecutar();
+    }
+
+    DialogoConfirmacion dialogo3 = null!;
+    Poliza? _polizaParaEliminar = null;
+    private void ConfirmarEliminacion(Poliza p)
+    {
+        _polizaParaEliminar = p;
+        dialogo3.Mensaje = $"¿Desea eliminar la poliza con ID {p.id}?";
+        dialogo3.Mostrar();
+    }
+    private void Eliminar()
+    {
+        if (_polizaParaEliminar != null)
+        {
+            EliminarPolizaUseCase.Ejecutar(_polizaParaEliminar.id);
+            listaPolizas = ListarPolizasUseCase.Ejecutar();
+        }
+    }
+
+    void ModificarPoliza(Poliza p)
+    {
+        Navegador.NavigateTo($"poliza/{p.id}");
+    }
+
+}

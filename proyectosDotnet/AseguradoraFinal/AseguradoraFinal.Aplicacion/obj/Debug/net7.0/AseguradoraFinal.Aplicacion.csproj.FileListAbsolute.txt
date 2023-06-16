@@ -1,0 +1,12 @@
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.Aplicacion\bin\Debug\net7.0\AseguradoraFinal.Aplicacion.deps.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.Aplicacion\bin\Debug\net7.0\AseguradoraFinal.Aplicacion.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.Aplicacion\bin\Debug\net7.0\AseguradoraFinal.Aplicacion.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.Aplicacion\obj\Debug\net7.0\AseguradoraFinal.Aplicacion.csproj.AssemblyReference.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.Aplicacion\obj\Debug\net7.0\AseguradoraFinal.Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.Aplicacion\obj\Debug\net7.0\AseguradoraFinal.Aplicacion.AssemblyInfoInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.Aplicacion\obj\Debug\net7.0\AseguradoraFinal.Aplicacion.AssemblyInfo.cs
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.Aplicacion\obj\Debug\net7.0\AseguradoraFinal.Aplicacion.csproj.CoreCompileInputs.cache
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.Aplicacion\obj\Debug\net7.0\AseguradoraFinal.Aplicacion.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.Aplicacion\obj\Debug\net7.0\refint\AseguradoraFinal.Aplicacion.dll
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.Aplicacion\obj\Debug\net7.0\AseguradoraFinal.Aplicacion.pdb
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.Aplicacion\obj\Debug\net7.0\ref\AseguradoraFinal.Aplicacion.dll
