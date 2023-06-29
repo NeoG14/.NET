@@ -1,0 +1,95 @@
+@page "/tercero/{id:int?}"
+@inject NavigationManager Navegador;
+@inject AgregarTerceroUseCase AgregarTerceroUseCase
+@inject ModificarTerceroUseCase ModificarTerceroUseCase
+@inject ObtenerTerceroUseCase ObtenerTerceroUseCase
+@inject ListarSiniestrosUseCase ListarSiniestrosUseCase
+
+<DialogoError @ref="error" OnConfirmado="Error"/>
+<div class="container">
+    @if (_esNuevoTercero)
+    {
+        <h3>Agregando un nuevo Tercero</h3>
+    }
+    else
+    {
+        <h3>Modificando al Tercero "@_tercero.nombre"</h3>
+    }
+
+    <label for="aseg">Aseguradora</label>
+    <input placeholder="Aseguradora" @bind="_tercero.aseguradora" class="form-control" name="aseg">
+    <label for="dni">DNI</label>
+    <input placeholder="DNI" @bind="_tercero.dni" class="form-control" name="dni">
+    <label for="nombre">Nombre</label>
+    <input placeholder="Nombre" @bind="_tercero.nombre" class="form-control" name="nombre">
+    <label for="ape">Apellido</label>
+    <input placeholder="Apellido" @bind="_tercero.apellido" class="form-control" name="ape">
+    <label for="tel">Telefono</label>
+    <input placeholder="Telefono" @bind="_tercero.telefono" class="form-control" name="tel">
+    <label for="SiniestroId">Siniestro ID</label>
+    <select class="form-control" @bind="_tercero.siniestroId" name="SiniestroId">
+    @foreach (var p in listaSiniestros)
+    {
+        <option>@p.id</option>
+    }
+    </select>
+    <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+</div>
+@code {
+   Tercero _tercero = new Tercero();
+   [Parameter] public int? id { get; set; }
+
+   List<Siniestro> listaSiniestros = new List<Siniestro>();
+    protected override void OnInitialized()
+    {
+        listaSiniestros = ListarSiniestrosUseCase.Ejecutar();
+    }
+    bool _esNuevoTercero = true;
+    protected override void OnParametersSet()
+    {
+        if (id != null)
+        {
+            var tercero_hallado = ObtenerTerceroUseCase.Ejecutar(id.Value);
+            if (tercero_hallado != null)
+            {
+                _tercero = tercero_hallado;
+                _esNuevoTercero = false;
+            }
+        }
+    }
+
+    DialogoError error = null!;
+
+    private void Error(string msj)
+    {
+        error.Mostrar(msj);
+    }
+
+    private bool validar()
+    {
+        bool ok = false;
+        if(string.IsNullOrWhiteSpace(_tercero.nombre) | string.IsNullOrWhiteSpace(_tercero.apellido) | string.IsNullOrWhiteSpace(_tercero.aseguradora) | _tercero.siniestroId==0)
+        {
+            Error("TODOS LOS CAMPOS SON OBLIGATORIOS");
+        }
+        else
+            ok = true;
+        return ok;
+    }
+   void Aceptar()
+   {
+        if(validar())
+        {
+            if(_esNuevoTercero)
+            {
+                AgregarTerceroUseCase.Ejecutar(_tercero);
+            }
+            else
+            {
+                ModificarTerceroUseCase.Ejecutar(_tercero);
+            }
+            _tercero = new Tercero();
+            Navegador.NavigateTo("terceros");
+        }
+   }
+}

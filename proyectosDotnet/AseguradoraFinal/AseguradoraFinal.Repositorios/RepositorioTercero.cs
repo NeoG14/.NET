@@ -27,28 +27,6 @@ public class RepositorioTercero : IRepositorioTercero
         } 
     }
 
-    public void EliminarTercerosSiniestro(int idSiniestro)
-    {
-        using (var db = new AseguradoraContext())
-        {
-            var terceros = db.terceros.Where(b => b.siniestroId == idSiniestro);
-            foreach (var tercero in terceros)
-            {
-                EliminarTercero(tercero.id);
-            }
-            db.SaveChanges();
-        }
-    }
-
-    public List<int> IdTerceros(int idSiniestro)
-    {
-        using (var db = new AseguradoraContext())
-        {
-            var ids = db.terceros.Where(a => a.siniestroId == idSiniestro).Select(v => v.id).ToList();
-            return ids;
-        }   
-    }
-
     public void ModificarTercero(Tercero t)
     {
         using (var db = new AseguradoraContext())

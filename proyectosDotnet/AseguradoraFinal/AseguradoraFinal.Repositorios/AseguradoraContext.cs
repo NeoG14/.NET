@@ -16,4 +16,9 @@ public class AseguradoraContext : DbContext
     {
         optionsBuilder.UseSqlite("data source=Aseguradora.sqlite");
     }
+
+    public DbContext GetDatabase()
+    {
+        return this;
+    }
 }

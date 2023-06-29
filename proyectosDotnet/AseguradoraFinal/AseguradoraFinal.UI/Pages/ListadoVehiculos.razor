@@ -3,7 +3,7 @@
 @inject EliminarVehiculoUseCase EliminarVehiculoUseCase
 @inject NavigationManager Navegador
 
-<DialogoConfirmacion @ref="dialogo2" OnConfirmado="Eliminar"/>
+<DialogoConfirmacion @ref="dialogo" OnConfirmado="Eliminar"/>
 
 <table class="table">
    <thead>
@@ -44,13 +44,12 @@
         listaVehiculos = ListarVehiculosUseCase.Ejecutar();
     }
 
-    DialogoConfirmacion dialogo2 = null!;
+    DialogoConfirmacion dialogo = null!;
     Vehiculo? _vehiculoParaEliminar = null;
     private void ConfirmarEliminacion(Vehiculo v)
     {
         _vehiculoParaEliminar = v;
-        dialogo2.Mensaje = $"¿Desea eliminar al vehiculo con patente {v.dominio}?";
-        dialogo2.Mostrar();
+         dialogo.Mostrar($"¿Desea eliminar al vehiculo con patente {v.dominio}; = ");
     }
     private void Eliminar()
     {

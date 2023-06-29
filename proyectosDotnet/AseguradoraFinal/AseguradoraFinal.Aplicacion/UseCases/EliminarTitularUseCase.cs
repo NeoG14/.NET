@@ -23,32 +23,5 @@ public class EliminarTitularUseCase
     public void Ejecutar(int id)
     {
         _repo.EliminarTitular(id);
-        //_repoVehiculo.EliminarVehiculosTitular(id);
-    /*
-        var EliminarVehiculo = new EliminarVehiculoUseCase(_repoVehiculo,_repoPoliza);
-        List<int>? idVehiculos = _repoVehiculo.IdVehiculos(id);
-        if(idVehiculos!=null){
-            foreach(int idV in idVehiculos)
-            {
-                EliminarVehiculo.Ejecutar(idV);
-            }
-        }
-    */
-        
-        
-        
-        /*
-        List<int>? idVehiculos = _repoVehiculo.IdVehiculos(id);
-        List<int>? idPolizas = _repoVehiculo.IdVehiculos(id);
-        List<int>? idSiniestros = _repoVehiculo.IdVehiculos(id);
-        List<int>? idTerceros = _repoVehiculo.IdVehiculos(id);
-        if(vehiculos!=null){
-            foreach(int idV in vehiculos)
-            {
-                _repoPoliza.EliminarPolizasVehiculo(idV);
-            }
-        }
-        _repoVehiculo.EliminarVehiculosTitular(id);
-            */
     }
 }

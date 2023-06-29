@@ -10,8 +10,8 @@ public class ListarTitularesConSusVehiculosUseCase
     {
         _repo = repo;
     }
-    public List<Titular> Ejecutar()
+    public List<Vehiculo> Ejecutar(int id)
     {
-       return _repo.ListarTitularesConSusVehiculos();
+       return _repo.ListarTitularesConSusVehiculos(id);
     }
 }

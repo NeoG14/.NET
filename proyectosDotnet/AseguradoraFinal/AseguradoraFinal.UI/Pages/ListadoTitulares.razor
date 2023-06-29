@@ -1,9 +1,11 @@
 @page "/titulares"
 @inject ListarTitularesUseCase ListarTitularesUseCase
 @inject EliminarTitularUseCase EliminarTitularUseCase
+@inject ListarTitularesConSusVehiculosUseCase ListarTitularesConSusVehiculosUseCase
 @inject NavigationManager Navegador
 
-<DialogoConfirmacion @ref="dialogo1" OnConfirmado="Eliminar"/>
+<DialogoConfirmacion @ref="dialogo" OnConfirmado="Eliminar"/>
+<Modal @ref="modal1" OnConfirmado="MostrarVehiculos"/>
 
 <table class="table">
    <thead>
@@ -29,6 +31,9 @@
                <td>@t.telefono</td>
                <td>@t.correo</td>
                <td>
+                    <button class="btn btn-success" @onclick="()=>MostrarModal(t)">
+                        <span class="oi oi-key"></span>
+                    </button>
                     <button class="btn btn-primary">
                         <span class="oi oi-pencil" @onclick="()=>ModificarTitular(t)"></span>
                     </button>
@@ -41,6 +46,7 @@
    </tbody>
 </table>
 
+
 @code{
     List<Titular> listaTitulares = new List<Titular>();
     protected override void OnInitialized()
@@ -48,13 +54,13 @@
         listaTitulares = ListarTitularesUseCase.Ejecutar();
     }
 
-    DialogoConfirmacion dialogo1 = null!;
+    DialogoConfirmacion dialogo = null!;
+    Modal modal1 = null!;
     Titular? _titularParaEliminar = null;
     private void ConfirmarEliminacion(Titular t)
     {
         _titularParaEliminar = t;
-        dialogo1.Mensaje = $"¿Desea eliminar al titular {t.nombre} {t.apellido}?";
-        dialogo1.Mostrar();
+        dialogo.Mostrar($"¿Desea eliminar al titular {t.nombre} {t.apellido}?");
     }
     private void Eliminar()
     {
@@ -63,6 +69,14 @@
             EliminarTitularUseCase.Ejecutar(_titularParaEliminar.id);
             listaTitulares = ListarTitularesUseCase.Ejecutar();
         }
+    }
+    private void MostrarVehiculos()
+    {
+    }
+
+    private void MostrarModal(Titular t)
+    {
+        modal1.Mostrar(ListarTitularesConSusVehiculosUseCase.Ejecutar(t.id));
     }
 
     void ModificarTitular(Titular t)

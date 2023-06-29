@@ -11,7 +11,7 @@ public class RepositorioSiniestro : IRepositorioSiniestro
             //Compruebo que el exista una poliza con el id = polizaId
             //y que la fecha de Ocurrencia sea menor a la fecha de ingreso
             var polizaId = db.polizas.Where(a => a.id == siniestro.polizaId).SingleOrDefault();
-            if(polizaId != null && siniestro.ocurrencia.CompareTo(siniestro.ingreso)<0)
+            if(polizaId != null)
                 db.Add(siniestro);
             db.SaveChanges();
         } 
@@ -26,30 +26,6 @@ public class RepositorioSiniestro : IRepositorioSiniestro
                 db.Remove(siniestroaBorrar);
             db.SaveChanges();
         } 
-        RepositorioTercero repoTerceros = new RepositorioTercero();
-        repoTerceros.EliminarTercerosSiniestro(id);
-    }
-
-    public void EliminarSiniestrosPoliza(int idPoliza)
-    {
-        using (var db = new AseguradoraContext())
-        {
-            var siniestros = db.siniestros.Where(b => b.polizaId == idPoliza);
-            foreach (var siniestro in siniestros)
-            {
-                EliminarSiniestro(siniestro.id);
-            }
-            db.SaveChanges();
-        }
-    }
-
-    public List<int> IdSiniestros(int idPoliza)
-    {
-        using (var db = new AseguradoraContext())
-        {
-            var ids = db.siniestros.Where(a => a.polizaId == idPoliza).Select(v => v.id).ToList();
-            return ids;
-        }   
     }
 
     public void ModificarSiniestro(Siniestro s)

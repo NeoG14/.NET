@@ -3,7 +3,7 @@
 @inject EliminarSiniestroUseCase EliminarSiniestroUseCase
 @inject NavigationManager Navegador
 
-<DialogoConfirmacion @ref="dialogo4" OnConfirmado="Eliminar"/>
+<DialogoConfirmacion @ref="dialogo" OnConfirmado="Eliminar"/>
 
 <table class="table">
    <thead>
@@ -22,8 +22,8 @@
            <tr>
                <td>@s.id</td>
                <td>@s.polizaId</td>
-               <td>@s.ingreso</td>
-               <td>@s.ocurrencia</td>
+               <td>@s.ingreso.ToString("MM-dd-yyyy")</td>
+               <td>@s.ocurrencia.ToString("MM-dd-yyyy")</td>
                <td>@s.direccion</td>
                <td>@s.descripcion</td>
                <td>
@@ -46,13 +46,12 @@
         listaSiniestros = ListarSiniestrosUseCase.Ejecutar();
     }
 
-    DialogoConfirmacion dialogo4 = null!;
+    DialogoConfirmacion dialogo = null!;
     Siniestro? _SiniestroParaEliminar = null;
     private void ConfirmarEliminacion(Siniestro s)
     {
         _SiniestroParaEliminar = s;
-        dialogo4.Mensaje = $"¿Desea eliminar la Siniestro con ID {s.id}?";
-        dialogo4.Mostrar();
+        dialogo.Mostrar($"¿Desea eliminar la Siniestro con ID {s.id}?");
     }
     private void Eliminar()
     {

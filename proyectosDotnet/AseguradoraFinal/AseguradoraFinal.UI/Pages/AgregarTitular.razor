@@ -1,0 +1,96 @@
+@page "/titular/{id:int?}"
+@inject NavigationManager Navegador;
+@inject AgregarTitularUseCase AgregarTitularUseCase
+@inject ModificarTitularUseCase ModificarTitularUseCase
+@inject ObtenerTitularUseCase ObtenerTitularUseCase
+@inject ListarTitularesUseCase ListarTitularesUseCase
+@using System.Text.RegularExpressions
+
+<DialogoError @ref="error" OnConfirmado="Error"/>
+<div class="container">
+    @if (_esNuevoTitular)
+    {
+        <h3>Agregando un nuevo Titular</h3>
+    }
+    else
+    {
+        <h3>Modificando al Titular "@_titular.nombre"</h3>
+    }
+    <label for="nombre">Nombre:</label>
+    <input placeholder="Nombre" @bind="_titular.nombre" class="form-control" name="nombre">
+    <label for="apellido">Apellido:</label>
+    <input placeholder="Apellido" @bind="_titular.apellido" class="form-control" name="apellido">
+    <label for="dni">DNI:</label>
+    <input type="number" placeholder="DNI" @bind="_titular.dni" class="form-control" name="dni">
+    <label for="direccion">Direccion:</label>
+    <input placeholder="Direccion" @bind="_titular.direccion" class="form-control" name="direccion">
+    <label for="telefono">Telefono:</label>
+    <input placeholder="Telefono" @bind="_titular.telefono" class="form-control" name="telefono">
+    <label for="correo">Correo:</label>
+    <input placeholder="Correo" @bind="_titular.correo" class="form-control" name="correo">
+    <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+</div>
+
+@code {
+   Titular _titular = new Titular();
+   DialogoError error = null!;
+   [Parameter] public int? id { get; set; }
+    bool _esNuevoTitular = true;
+    protected override void OnParametersSet()
+    {
+        if (id != null)
+        {
+            var titular_hallado = ObtenerTitularUseCase.Ejecutar(id.Value);
+            if (titular_hallado != null)
+            {
+                _titular = titular_hallado;
+                _esNuevoTitular = false;
+            }
+        }
+    }
+
+    private bool validar()
+    {
+        bool ok = false;
+        if(string.IsNullOrWhiteSpace(_titular.nombre) | string.IsNullOrWhiteSpace(_titular.apellido) | string.IsNullOrWhiteSpace(_titular.telefono) | string.IsNullOrWhiteSpace(_titular.dni) | string.IsNullOrWhiteSpace(_titular.direccion) | string.IsNullOrWhiteSpace(_titular.correo))
+        {
+            Error("TODOS LOS CAMPOS SON OBLIGATORIOS");
+        }
+        //Solo se comprueba si agrego un nuevo titular sino no porque no puedo modificar el dni de un titular ya agregado ya que busca por dni para hacer la comprobacion
+        else if ( (id==null) && (ListarTitularesUseCase.Ejecutar().SingleOrDefault(a => a.dni == _titular.dni) != null))
+        {
+            Error("EL DNI YA EXISTE");
+        }
+        else if (!Regex.IsMatch(_titular.correo, "^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$"))
+        {
+            Error("CORREO NO VALIDO");
+        }
+        else
+            ok = true;
+        return ok;
+    }
+
+    private void Error(string msj)
+    {
+        error.Mostrar(msj);
+    }
+
+   void Aceptar()
+   {
+        if(validar())
+        {
+            if(_esNuevoTitular)
+            {   
+                AgregarTitularUseCase.Ejecutar(_titular);
+                _titular = new Titular();
+                Navegador.NavigateTo("titulares");
+            }
+            else
+            {
+                ModificarTitularUseCase.Ejecutar(_titular);
+                _titular = new Titular();
+                Navegador.NavigateTo("titulares");
+            } 
+        }
+   }
+}

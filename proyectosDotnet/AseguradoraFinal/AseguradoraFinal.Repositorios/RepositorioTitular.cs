@@ -9,9 +9,6 @@ public class RepositorioTitular : IRepositorioTitular
     {
         using (var db = new AseguradoraContext())
         {
-            //Compruebo que el dni sea unico
-            var dni = db.titulares.Where(a => a.dni == titular.dni).SingleOrDefault();
-            if(dni == null)
                 db.Add(titular);
             db.SaveChanges();
         } 
@@ -26,10 +23,9 @@ public class RepositorioTitular : IRepositorioTitular
                 db.Remove(titularBorrar);
             db.SaveChanges();
         } 
-        RepositorioVehiculo repoVehiculos = new RepositorioVehiculo();
-        repoVehiculos.EliminarVehiculosTitular(id);
     }
 
+    //No se puede modificar el dni de un titular proque la busqueda se realiza por dni 
     public void ModificarTitular(Titular t)
     {
         using (var db = new AseguradoraContext())
@@ -56,21 +52,19 @@ public class RepositorioTitular : IRepositorioTitular
         }   
     }
 
-    public List<Titular> ListarTitularesConSusVehiculos () 
+    public List<Vehiculo> ListarTitularesConSusVehiculos (int id) 
     {
+        List<Vehiculo> vehi = new List<Vehiculo>();
         using (var db = new AseguradoraContext())
         {
-            foreach (Titular a in db.titulares.Include(a => a.vehiculos))
+            //foreach (Vehiculo a in db.vehiculos.Include(a => a.vehiculos))
+            foreach (Vehiculo v in db.vehiculos)
             {
-                Console.WriteLine(a.nombre);
-                //a.vehiculos?.ToList().ForEach(ex => Console.WriteLine($" - {ex.Materia} {ex.Nota}"));
-                //return a.vehiculos?.ToList();
-                a.vehiculos?.ToList().ForEach(ex => Console.WriteLine($" - Patente: {ex.dominio} Año: {ex.fabricacion}"));
+                if (v.titularId == id)
+                    vehi.Add(v);
             }
         }
-
-        List<Titular> titulares = new List<Titular>();
-        return titulares ;
+        return vehi ;
     }
 
     public Titular? GetTitular(int id)

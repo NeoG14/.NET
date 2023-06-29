@@ -29,32 +29,8 @@ public class RepositorioVehiculo : IRepositorioVehiculo
                 db.Remove(vehiculoBorrar);
             db.SaveChanges();
         }
-        RepositorioPoliza repoPolizas = new RepositorioPoliza();
-        repoPolizas.EliminarPolizasVehiculo(id);
     }
 
-    public void EliminarVehiculosTitular(int idTitular)
-    {
-        using (var db = new AseguradoraContext())
-        {
-            var vehiculos = db.vehiculos.Where(b => b.titularId == idTitular);
-            foreach (var vehiculo in vehiculos)
-            {
-                EliminarVehiculo(vehiculo.id);
-            }
-            db.SaveChanges();
-        }
-    }
-    /*
-    public List<int> IdVehiculos(int idTitular)
-    {
-        using (var db = new AseguradoraContext())
-        {
-            var ids = db.vehiculos.Where(a => a.titularId == idTitular).Select(v => v.id).ToList();
-            return ids;
-        }   
-    }
-    */
     public void ModificarVehiculo(Vehiculo v)
     {
         using (var db = new AseguradoraContext())

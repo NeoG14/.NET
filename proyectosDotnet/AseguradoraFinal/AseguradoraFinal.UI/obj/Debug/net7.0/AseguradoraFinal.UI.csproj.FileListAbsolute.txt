@@ -57,7 +57,15 @@ C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\Asegurador
 C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\staticwebassets.pack.json
 C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\staticwebassets.build.json
 C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\scopedcss\Pages\AgregarPoliza.razor.rz.scp.css
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\scopedcss\Pages\AgregarSiniestro.razor.rz.scp.css
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\scopedcss\Pages\AgregarTercero.razor.rz.scp.css
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\scopedcss\Pages\AgregarTitular.razor.rz.scp.css
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\scopedcss\Pages\AgregarVehiculo.razor.rz.scp.css
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\scopedcss\Shared\DialogoConfirmacion.razor.rz.scp.css
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\scopedcss\Shared\DialogoError.razor.rz.scp.css
 C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
+C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\scopedcss\Shared\modal.razor.rz.scp.css
 C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
 C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\scopedcss\bundle\AseguradoraFinal.UI.styles.css
 C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\scopedcss\projectbundle\AseguradoraFinal.UI.bundle.scp.css
@@ -67,4 +75,3 @@ C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\Asegurador
 C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\AseguradoraFinal.UI.pdb
 C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\AseguradoraFinal.UI.genruntimeconfig.cache
 C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\ref\AseguradoraFinal.UI.dll
-C:\Users\nicol\Documents\GitHub\.NET\proyectosDotnet\AseguradoraFinal\AseguradoraFinal.UI\obj\Debug\net7.0\scopedcss\Shared\AgregarTitular.razor.rz.scp.css

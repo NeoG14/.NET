@@ -1,0 +1,73 @@
+@page "/titulares"
+@inject ListarTitularesUseCase ListarTitularesUseCase
+@inject EliminarTitularUseCase EliminarTitularUseCase
+@inject NavigationManager Navegador
+
+<DialogoConfirmacion @ref="dialogo1" OnConfirmado="Eliminar"/>
+
+<table class="table">
+   <thead>
+       <tr>
+           <th>ID</th>
+           <th>NOMBRE</th>
+           <th>APELLIDO</th>
+           <th>DNI</th>
+           <th>DIRECCIÓN</th>
+           <th>TELEFONO</th>
+           <th>CORREO</th>
+       </tr>
+   </thead>
+   <tbody>
+       @foreach (var t in listaTitulares)
+       {
+           <tr>
+               <td>@t.id</td>
+               <td>@t.nombre</td>
+               <td>@t.apellido</td>
+               <td>@t.dni</td>
+               <td>@t.direccion</td>
+               <td>@t.telefono</td>
+               <td>@t.correo</td>
+               <td>
+                    <button class="btn btn-primary">
+                        <span class="oi oi-pencil" @onclick="()=>ModificarTitular(t)"></span>
+                    </button>
+                    <button class="btn btn-danger" @onclick="()=>ConfirmarEliminacion(t)">
+                        <span class="oi oi-trash"></span>
+                    </button>
+                </td>
+           </tr>
+       }
+   </tbody>
+</table>
+
+@code{
+    List<Titular> listaTitulares = new List<Titular>();
+    protected override void OnInitialized()
+    {
+        listaTitulares = ListarTitularesUseCase.Ejecutar();
+    }
+
+    DialogoConfirmacion dialogo1 = null!;
+    Titular? _titularParaEliminar = null;
+    private void ConfirmarEliminacion(Titular t)
+    {
+        _titularParaEliminar = t;
+        dialogo1.Mensaje = $"¿Desea eliminar al titular {t.nombre} {t.apellido}?";
+        dialogo1.Mostrar();
+    }
+    private void Eliminar()
+    {
+        if (_titularParaEliminar != null)
+        {
+            EliminarTitularUseCase.Ejecutar(_titularParaEliminar.id);
+            listaTitulares = ListarTitularesUseCase.Ejecutar();
+        }
+    }
+
+    void ModificarTitular(Titular t)
+    {
+        Navegador.NavigateTo($"titular/{t.id}");
+    }
+
+}

@@ -1,0 +1,112 @@
+@page "/vehiculo/{id:int?}"
+@inject NavigationManager Navegador;
+@inject AgregarVehiculoUseCase AgregarVehiculoUseCase
+@inject ModificarVehiculoUseCase ModificarVehiculoUseCase
+@inject ObtenerVehiculoUseCase ObtenerVehiculoUseCase
+@inject ListarTitularesUseCase ListarTitularesUseCase
+@inject ListarVehiculosUseCase ListarVehiculosUseCase
+@using System.Text.RegularExpressions
+
+<DialogoError @ref="error" OnConfirmado="Error"/>
+
+<div class="container">
+    @if (_esNuevoVehiculo)
+    {
+        <h3>Agregando un nuevo Vehiculo</h3>
+        
+    }
+    else
+    {
+        <h3>Modificando al Vehiculo "@_vehiculo.dominio"</h3>
+    }
+    
+
+    <label for="patente">Patente</label>
+    <input placeholder="patente" @bind="_vehiculo.dominio" name="patente" class="form-control">
+    <label for="marca">Marca</label>
+    <input placeholder="marca" @bind="_vehiculo.marca" class="form-control" name="marca">
+    <label for="anio">Año</label>
+    <input type="number" min="1980" max="2023" @bind="_vehiculo.fabricacion" class="form-control" name="anio">
+    <label for="idT">ID Titular</label>
+    <select class="form-control" @bind="_vehiculo.titularId" name="idT">
+        <option value="" disabled selected>--Selecciona un Numero de Patente--</option> 
+    @foreach (var t in listaTitulares)
+    {
+        <option>@t.id</option>
+    }
+    </select>
+    <button  class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+</div>
+@code {
+   Vehiculo _vehiculo= new Vehiculo();
+   List<Titular> listaTitulares = new List<Titular>();
+
+   protected override void OnInitialized()
+    {
+        listaTitulares = ListarTitularesUseCase.Ejecutar();
+    }
+
+   [Parameter] public int? id { get; set; }
+    bool _esNuevoVehiculo = true;
+    protected override void OnParametersSet()
+    {
+        if (id != null)
+        {
+            var vehiculo_hallado = ObtenerVehiculoUseCase.Ejecutar(id.Value);
+            if (vehiculo_hallado != null)
+            {
+                _vehiculo = vehiculo_hallado;
+                _esNuevoVehiculo = false;
+            }
+        }
+    }
+    DialogoError error = null!;
+    private void Error(string msj)
+    {
+        error.Mostrar(msj);
+    }
+
+    private bool validar()
+    {
+        bool ok = false;
+        if(string.IsNullOrWhiteSpace(_vehiculo.dominio) | string.IsNullOrWhiteSpace(_vehiculo.marca) | string.IsNullOrWhiteSpace(_vehiculo.fabricacion) | _vehiculo.titularId == 0)
+        {
+            Error("TODOS LOS CAMPOS SON OBLIGATORIOS");
+        }
+        else if ( (id==null) && (ListarVehiculosUseCase.Ejecutar().SingleOrDefault(a => a.dominio == _vehiculo.dominio) != null))
+        {
+            Error("LA PATENTE YA EXISTE");
+        }
+        else if (!Regex.IsMatch(_vehiculo.dominio, "^[a-zA-Z]{3}\\d{3}$"))
+        {
+            Error("PATENTE INVALIDA - FORMATO 'ABC123'");
+        }
+        else if(int.Parse(_vehiculo.fabricacion)>2023)
+        {
+            Error("SELECCIONES AÑO ENTRE 1980 Y 2023");
+        }
+        else
+            ok = true;
+        return ok;
+    }
+
+   void Aceptar()
+   {
+        if(validar())
+        {
+            if(_esNuevoVehiculo)
+            {
+                AgregarVehiculoUseCase.Ejecutar(_vehiculo);
+                _vehiculo = new Vehiculo();
+                Navegador.NavigateTo("vehiculos");
+            }
+            else
+            {
+                ModificarVehiculoUseCase.Ejecutar(_vehiculo);
+                _vehiculo = new Vehiculo();
+                Navegador.NavigateTo("vehiculos");
+            }
+        }
+        
+   }
+}

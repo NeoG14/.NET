@@ -1,0 +1,104 @@
+@page "/poliza/{id:int?}"
+@inject NavigationManager Navegador;
+@inject AgregarPolizaUseCase AgregarPolizaUseCase
+@inject ModificarPolizaUseCase ModificarPolizaUseCase
+@inject ObtenerPolizaUseCase ObtenerPolizaUseCase
+@inject ListarVehiculosUseCase ListarVehiculosUseCase
+
+<DialogoError @ref="error" OnConfirmado="Error"/>
+<div class="container">
+    @if (_esNuevaPoliza)
+    {
+        <h3>Agregando un nuevo Poliza</h3>
+    }
+    else
+    {
+        <h3>Modificando la Poliza "@_poliza.id"</h3>
+    }
+    
+
+    <label for="valor">Valor:</label>
+    <input placeholder="valor" @bind="_poliza.valor" class="form-control" name="valor" type="number">
+    <label for="franquicia">Franquicia:</label>
+    <input placeholder="Franquicia" @bind="_poliza.franquicia" class="form-control" name="franquicia">
+    <label for="cober">Cobertura:</label>
+    <select class="form-control" @bind="_poliza.cobertura" name="cober">
+        <option>TODO RIESGO</option>
+        <option>RESPONSABILIDAD CIVIL</option>
+    </select>
+    <label for="inicio">Fecha Inicio:</label>
+    <input type="date" @bind="_poliza.fechaInicio" class="form-control" name="inicio">
+    <label for="fin">Fecha Fin:</label>
+    <input type="date" @bind="_poliza.fechaFin" class="form-control" name="fin">
+    <label for="idV">ID Vehiculo:</label>
+    <select class="form-control" @bind="_poliza.vehiculoId" name="idV">
+    @foreach (var v in listaVehiculos)
+    {
+        <option>@v.id</option>
+    }
+    </select>
+    <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+</div>
+
+@code {
+    Poliza _poliza= new Poliza();
+    List<Vehiculo> listaVehiculos = new List<Vehiculo>();
+    protected override void OnInitialized()
+    {
+        listaVehiculos = ListarVehiculosUseCase.Ejecutar();
+    }
+    
+    [Parameter] public int? id { get; set; }
+    bool _esNuevaPoliza = true;
+    protected override void OnParametersSet()
+    {
+        if (id != null)
+        {
+            var poliza_hallado = ObtenerPolizaUseCase.Ejecutar(id.Value);
+            if (poliza_hallado != null)
+            {
+                _poliza = poliza_hallado;
+                _esNuevaPoliza = false;
+            }
+        }
+    }
+
+    DialogoError error = null!;
+
+    private void Error(string msj)
+    {
+        error.Mostrar(msj);
+    }
+
+    private bool validar()
+    {
+        bool ok = false;
+        if(string.IsNullOrWhiteSpace(_poliza.franquicia) | _poliza.vehiculoId == 0 | _poliza.valor == 0 | string.IsNullOrWhiteSpace(_poliza.cobertura))
+        {
+            Error("TODOS LOS CAMPOS SON OBLIGATORIOS");
+        }
+        else if (_poliza.fechaInicio.CompareTo(_poliza.fechaFin)>0)
+        {
+            Error("LA FECHA DE INICIO NO DEBE SER MAYOR A LA FECHA DE FIN DE POLIZA");
+        }
+        else
+            ok = true;
+        return ok;
+    }
+   void Aceptar()
+   {
+        if(validar())
+        {
+            if(_esNuevaPoliza)
+            {
+                AgregarPolizaUseCase.Ejecutar(_poliza);
+            }
+            else
+            {
+                ModificarPolizaUseCase.Ejecutar(_poliza);
+            }
+            _poliza = new Poliza();
+            Navegador.NavigateTo("polizas");
+        }      
+    }
+}

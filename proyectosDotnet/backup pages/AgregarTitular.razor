@@ -1,0 +1,82 @@
+@page "/titular/{id:int?}"
+@inject NavigationManager Navegador;
+@inject AgregarTitularUseCase AgregarTitularUseCase
+@inject ModificarTitularUseCase ModificarTitularUseCase
+@inject ObtenerTitularUseCase ObtenerTitularUseCase
+@inject ListarTitularesUseCase ListarTitularesUseCase
+
+@if (_esNuevoTitular)
+{
+    <h3>Agregando un nuevo Titular</h3>
+}
+else
+{
+    <h3>Modificando al Titular "@_titular.nombre"</h3>
+}
+
+<DialogoError @ref="error" OnConfirmado="Error"/>
+
+<label for="nombre">Nombre:</label>
+<input placeholder="Nombre" @bind="_titular.nombre" class="form-control" name="nombre">
+<label for="apellido">Apellido:</label>
+<input placeholder="Apellido" @bind="_titular.apellido" class="form-control" name="apellido">
+<label for="dni">DNI:</label>
+<input placeholder="DNI" @bind="_titular.dni" class="form-control" name="dni">
+<label for="direccion">Direccion:</label>
+<input placeholder="Direccion" @bind="_titular.direccion" class="form-control" name="direccion">
+<label for="telefono">Telefono:</label>
+<input placeholder="Telefono" @bind="_titular.telefono" class="form-control" name="telefono">
+<label for="correo">Correo:</label>
+<input placeholder="Correo" @bind="_titular.correo" class="form-control" name="correo">
+<button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+
+@code {
+   Titular _titular = new Titular();
+   [Parameter] public int? id { get; set; }
+    bool _esNuevoTitular = true;
+    protected override void OnParametersSet()
+    {
+        if (id != null)
+        {
+            var titular_hallado = ObtenerTitularUseCase.Ejecutar(id.Value);
+            if (titular_hallado != null)
+            {
+                _titular = titular_hallado;
+                _esNuevoTitular = false;
+            }
+        }
+    }
+
+
+    DialogoError error = null!;
+    private void Error()
+    {
+        error.Mostrar();
+    }
+
+   void Aceptar()
+   {
+        {
+            if(_esNuevoTitular)
+            {   // Comprobar que el dni es unico
+                if( (ListarTitularesUseCase.Ejecutar().SingleOrDefault(a => a.dni == _titular.dni) == null) & (!string.IsNullOrWhiteSpace(_titular.nombre)))
+                {
+                    AgregarTitularUseCase.Ejecutar(_titular);
+                    _titular = new Titular();
+                    Navegador.NavigateTo("titulares");
+                }   
+                else
+                {
+                    error.Mensaje = "El DNI YA EXISTE";
+                    Error();
+                }     
+            }
+            else
+            {
+                ModificarTitularUseCase.Ejecutar(_titular);
+                _titular = new Titular();
+                Navegador.NavigateTo("titulares");
+            } 
+        }
+   }
+}

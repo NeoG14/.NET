@@ -1,0 +1,98 @@
+@page "/siniestro/{id:int?}"
+@inject NavigationManager Navegador;
+@inject AgregarSiniestroUseCase AgregarSiniestroUseCase
+@inject ModificarSiniestroUseCase ModificarSiniestroUseCase
+@inject ObtenerSiniestroUseCase ObtenerSiniestroUseCase
+@inject ListarPolizasUseCase ListarPolizasUseCase
+
+<DialogoError @ref="error" OnConfirmado="Error"/>
+<div class="container">
+    @if (_esNuevoSiniestro)
+    {
+        <h3>Agregando un nuevo Siniestro</h3>
+    }
+    else
+    {
+        <h3>Modificando al Siniestro "@_siniestro.polizaId"</h3>
+    }
+
+    <label for="ocu">Ocurrencia:</label>
+    <input type="date" @bind="_siniestro.ocurrencia" class="form-control" name="ocu">
+    <label for="dir">Direccion:</label>
+    <input placeholder="Dirección" @bind="_siniestro.direccion" class="form-control" name="dir" type="textarea">
+    <label for="desc">Descripción:</label>
+    <input placeholder="Descripción" @bind="_siniestro.descripcion" class="form-control" name="desc">
+    <label for="idP">Poliza ID:</label>
+    <select class="form-control" @bind="_siniestro.polizaId" name="idP">
+    @foreach (var p in listaPolizas)
+    {
+        <option>@p.id</option>
+    }
+    </select>
+    <button class="btn btn-primary" @onclick="Aceptar">Aceptar</button>
+</div>
+
+@code {
+   Siniestro _siniestro = new Siniestro();
+   [Parameter] public int? id { get; set; }
+
+   List<Poliza> listaPolizas = new List<Poliza>();
+
+   protected override void OnInitialized()
+    {
+        listaPolizas = ListarPolizasUseCase.Ejecutar();
+    }
+    bool _esNuevoSiniestro = true;
+    protected override void OnParametersSet()
+    {
+        if (id != null)
+        {
+            var vehiculo_hallado = ObtenerSiniestroUseCase.Ejecutar(id.Value);
+            if (vehiculo_hallado != null)
+            {
+                _siniestro = vehiculo_hallado;
+                _esNuevoSiniestro = false;
+            }
+        }
+    }
+
+    DialogoError error = null!;
+
+    private void Error(string msj)
+    {
+        error.Mostrar(msj);
+    }
+
+    private bool validar()
+    {
+        bool ok = false;
+        if(string.IsNullOrWhiteSpace(_siniestro.descripcion) | string.IsNullOrWhiteSpace(_siniestro.direccion) | _siniestro.polizaId == -1)
+        {
+            Error("TODOS LOS CAMPOS SON OBLIGATORIOS");
+        }
+        else if (_siniestro.ingreso.CompareTo(_siniestro.ocurrencia)<=0)
+        {
+            Error("FECHA INVALIDA");
+        }
+        else
+            ok = true;
+        return ok;
+    }
+
+   void Aceptar()
+   {
+        if(validar())
+        {
+            if(_esNuevoSiniestro)
+            {
+                AgregarSiniestroUseCase.Ejecutar(_siniestro);
+            }
+            else
+            {
+                ModificarSiniestroUseCase.Ejecutar(_siniestro);
+            }
+            _siniestro = new Siniestro();
+            Navegador.NavigateTo("siniestros");
+        }
+   }
+}

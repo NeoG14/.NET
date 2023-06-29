@@ -16,16 +16,6 @@ public class EliminarVehiculoUseCase
     public void Ejecutar(int id)
     {
         _repo.EliminarVehiculo(id);
-        //_repoPoliza.EliminarPolizasVehiculo(id);
-        /*
-        var EliminarPoliza = new EliminarPolizaUseCase(_repoPoliza);
-        List<int>? idPolizas = _repoPoliza.IdPolizas(id);
-        if(idPolizas!=null){
-            foreach(int idP in idPolizas)
-            {
-                EliminarPoliza.Ejecutar(idP);
-            }
-        }
-        */
+        
     }
 }

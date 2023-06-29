@@ -20,14 +20,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Pages/FetchData.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -52,10 +44,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdGFkb1ZlaGljdWxvcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Shared/DialogoConfirmacion.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERpYWxvZ29Db25maXJtYWNpb24ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -64,13 +52,41 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Shared/AgregarTitular.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEFncmVnYXJUaXR1bGFyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = b-6nkcf3u471
+[C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Pages/AgregarPoliza.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWdyZWdhclBvbGl6YS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ugarwggtr0
+
+[C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Pages/AgregarSiniestro.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWdyZWdhclNpbmllc3Ryby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-vzh78bs8wa
+
+[C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Pages/AgregarTercero.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWdyZWdhclRlcmNlcm8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-tbf89cr6ab
+
+[C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Pages/AgregarTitular.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWdyZWdhclRpdHVsYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-jrm7wooh5p
+
+[C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Pages/AgregarVehiculo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWdyZWdhclZlaGljdWxvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-9u1a6f968j
+
+[C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Shared/DialogoConfirmacion.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERpYWxvZ29Db25maXJtYWNpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-8bicv2izfm
+
+[C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Shared/DialogoError.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERpYWxvZ29FcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-bon4mha4zb
 
 [C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-fgnbtmu3wj
+
+[C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Shared/Modal.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-olxxhn1qs6
 
 [C:/Users/nicol/Documents/GitHub/.NET/proyectosDotnet/AseguradoraFinal/AseguradoraFinal.UI/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=

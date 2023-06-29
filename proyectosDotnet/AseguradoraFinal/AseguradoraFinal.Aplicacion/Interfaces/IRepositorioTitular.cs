@@ -7,7 +7,7 @@ public interface IRepositorioTitular
     void EliminarTitular(int dni);
     void ModificarTitular(Titular t);
     List<Titular> ListarTitulares();
-    List<Titular> ListarTitularesConSusVehiculos ();
+    List<Vehiculo> ListarTitularesConSusVehiculos (int id);
     Titular? GetTitular(int id);
  
     

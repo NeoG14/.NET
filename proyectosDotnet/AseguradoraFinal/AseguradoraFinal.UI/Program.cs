@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using AseguradoraFinal.UI.Data;
 using AseguradoraFinal.Repositorios;
 using AseguradoraFinal.Aplicacion.Interfaces;
 using AseguradoraFinal.Aplicacion.UseCases;
@@ -17,7 +16,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
 
 // Mis Servicios al contenedor DI
 builder.Services.AddTransient<AgregarTitularUseCase>();

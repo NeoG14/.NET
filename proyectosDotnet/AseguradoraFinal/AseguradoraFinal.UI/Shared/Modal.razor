@@ -1,0 +1,59 @@
+@if(visible)
+{
+    <div class="dialogo-contenedor">
+
+        <div class="dialogo-contenido">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>PATENTE</th>
+                        <th>MARCA</th>
+                        <th>FABRICACIÓN</th>
+                        <th>ID TITULAR</th>
+                        <th><button type="button" class="close" @onclick="Cerrar">&times;</button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var v in vehi)
+                    {
+                        <tr>
+                            <td>@v.id</td>
+                            <td>@v.dominio</td>
+                            <td>@v.marca</td>
+                            <td>@v.fabricacion</td>
+                            <td>@v.titularId</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@code {
+    private bool visible = false;
+    [Parameter]
+    public List<Vehiculo> vehi { get; set; } = new List<Vehiculo>();
+    [Parameter]
+    public EventCallback<List<Vehiculo>> OnConfirmado{get;set;}
+
+    public void Mostrar(List<Vehiculo> vehiculos)
+    {
+        vehi = vehiculos;
+        visible=true;
+        StateHasChanged();
+        OnConfirmado.InvokeAsync();
+    }
+    void Cerrar()
+    {
+        visible=false;
+        StateHasChanged();
+    }
+
+    void CerrarYconfirmar()
+    {
+        visible=false;
+       
+    }
+}
